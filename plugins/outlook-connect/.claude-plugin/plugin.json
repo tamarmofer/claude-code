@@ -1,0 +1,9 @@
+{
+  "name": "outlook-connect",
+  "description": "Connect to Microsoft Outlook for email and calendar management via Microsoft Graph API",
+  "version": "1.0.0",
+  "author": {
+    "name": "Anthropic",
+    "email": "support@anthropic.com"
+  }
+}
