@@ -1,0 +1,10 @@
+{
+  "name": "market-comps",
+  "version": "1.0.0",
+  "description": "Research and compare software tools, libraries, and products against market alternatives to inform technical decisions",
+  "author": {
+    "name": "Anthropic",
+    "email": "support@anthropic.com"
+  },
+  "keywords": ["comparison", "research", "evaluation", "alternatives", "decision-making"]
+}

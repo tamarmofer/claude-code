@@ -145,6 +145,17 @@
       },
       "source": "./plugins/security-guidance",
       "category": "security"
+    },
+    {
+      "name": "market-comps",
+      "description": "Research and compare software tools, libraries, and products against market alternatives to inform technical decisions",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "source": "./plugins/market-comps",
+      "category": "productivity"
     }
   ]
 }
