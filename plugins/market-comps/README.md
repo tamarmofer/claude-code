@@ -1,59 +1,73 @@
 # Market Comps
 
-Research and compare software tools, libraries, frameworks, and products against their market alternatives to inform technical decisions.
+Research comparable property sales and market data for a given address to support real estate valuation decisions.
 
 ## Usage
 
 ```
-/market-comps <tool-or-product> [--depth shallow|deep] [--focus features|pricing|community|ecosystem|all]
+/market-comps <address> [--type sale|rental|both] [--radius 0.25mi|0.5mi|1mi] [--period 6mo|12mo|24mo]
 ```
 
 ### Examples
 
 ```
-/market-comps Redis
-/market-comps React --depth shallow
-/market-comps PostgreSQL --focus ecosystem
-/market-comps Tailwind CSS --depth deep --focus all
+/market-comps 420 E 80th St, New York, NY
+/market-comps 1234 Oak Ave, Austin, TX --type both
+/market-comps 555 Market St, San Francisco --radius 0.25mi --period 6mo
 ```
 
 ## How It Works
 
-1. **Parses the request** and sets up progress tracking via TodoWrite
-2. **In parallel:** researches the subject tool AND scans your local project (package.json, requirements.txt, etc.) for existing usage context
-3. **Identifies alternatives** - direct competitors, indirect alternatives, emerging options
-4. **Researches each alternative in parallel** using dedicated market-researcher agents
-5. **Synthesizes findings** into a structured comparison with tables, scenario-based guidance, and risk assessment
+1. **In parallel:** profiles the subject property AND analyzes the neighborhood market
+2. **Finds comparable sales** - 5-8 recently sold properties matched on type, size, beds/baths, age, and proximity
+3. **Applies adjustments** for differences between comps and subject (location, condition, size, features)
+4. **Produces a CMA** (Comparative Market Analysis) with estimated market value range
 
 ## Output
 
 The report includes:
 
-- **Your Project Context** - what you currently use in this problem space (if detected)
-- **Comparison table** - dense, scannable, focused on dimensions where tools differ
-- **Key findings** - non-obvious insights not already visible in the table
-- **Scenario-based guidance** - "Choose X when..." format for each option
-- **Risks** - bus factor, license concerns, breaking change history, lock-in
-- **Sources** - URLs consulted with retrieval dates
+- **Subject property summary** - type, size, beds/baths, last sale, tax assessment, automated estimates
+- **Neighborhood snapshot** - median price, YoY trends, days on market, walk score
+- **Comparable sales table** - each comp with raw and adjusted prices
+- **Adjustment details** - what was adjusted and why
+- **Estimated market value** - low / mid / high range with $/sqft
+- **Rental analysis** - estimated rent and gross rent multiplier (if `--type rental` or `both`)
+- **Market trends** - appreciating, stable, or declining
+- **Confidence level** - based on comp quality and data availability
+- **Disclaimer** - not a formal appraisal
 
 ## Options
 
 | Option | Values | Default | Description |
 |--------|--------|---------|-------------|
-| `--depth` | `shallow`, `deep` | `deep` | `shallow` compares 3 alternatives; `deep` compares up to 6 |
-| `--focus` | `features`, `pricing`, `community`, `ecosystem`, `all` | `all` | Prioritize a specific comparison dimension |
+| `--type` | `sale`, `rental`, `both` | `sale` | Type of comps to search for |
+| `--radius` | `0.25mi`, `0.5mi`, `1mi` | `0.5mi` | Search radius for comparables |
+| `--period` | `6mo`, `12mo`, `24mo` | `12mo` | How far back to search for sales |
 
 ## Agents
 
 | Agent | Model | Role |
 |-------|-------|------|
-| **market-researcher** | sonnet | Gathers structured factual data about a single tool via web search |
-| **comparison-analyst** | sonnet | Synthesizes pre-gathered research into actionable comparison reports |
+| **property-profiler** | sonnet | Researches subject property details from public sources |
+| **neighborhood-analyst** | sonnet | Gathers area-level market data and livability metrics |
+| **comp-finder** | sonnet | Finds and ranks comparable recent sales/rentals |
+| **comp-analyst** | sonnet | Synthesizes all data into a CMA with adjustments and valuation |
 
-## Design Principles
+## Data Sources
 
-- **Factual and sourced** - uses web search for current data; marks unverifiable claims
-- **Balanced** - every tool has trade-offs; no single "best" recommendation
-- **Context-aware** - considers your existing project dependencies and stack
-- **Decision-oriented** - scenario-based guidance, not opinions
-- **Honest about gaps** - missing data shown as N/A, not guessed
+The skill searches publicly available data from:
+- Zillow (Zestimate, property details, recently sold)
+- Redfin (estimates, market insights)
+- Realtor.com (listings, sold data)
+- County assessor records (tax assessed values)
+- WalkScore.com (walkability, transit)
+- GreatSchools (school ratings)
+
+## Caveats
+
+- This is an automated estimate, **not a formal appraisal**
+- Accuracy depends on public data availability (varies by market)
+- Rural or unusual properties may have few comps and wider estimate ranges
+- Data freshness varies by source - dates are noted in the report
+- Always consult a licensed appraiser or real estate professional for formal valuations

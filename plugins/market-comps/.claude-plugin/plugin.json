@@ -1,10 +1,10 @@
 {
   "name": "market-comps",
   "version": "1.0.0",
-  "description": "Research and compare software tools, libraries, and products against market alternatives to inform technical decisions",
+  "description": "Research comparable property sales and rental data for a given address to support real estate market analysis",
   "author": {
     "name": "Anthropic",
     "email": "support@anthropic.com"
   },
-  "keywords": ["comparison", "research", "evaluation", "alternatives", "decision-making"]
+  "keywords": ["real-estate", "comparables", "property", "valuation", "CMA"]
 }

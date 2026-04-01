@@ -148,7 +148,7 @@
     },
     {
       "name": "market-comps",
-      "description": "Research and compare software tools, libraries, and products against market alternatives to inform technical decisions",
+      "description": "Research comparable property sales and rental data for a given address to support real estate market analysis",
       "version": "1.0.0",
       "author": {
         "name": "Anthropic",
