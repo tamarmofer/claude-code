@@ -1,0 +1,9 @@
+{
+  "name": "inbox-command",
+  "version": "0.1.0",
+  "description": "Triage Outlook + Gmail three times a day. Flags what needs you, drafts replies in your tone, classifies senders into yes/pass/silence. Drafts-only by default.",
+  "author": {
+    "name": "Tamar Mofer",
+    "email": "tamar@dundeeus.com"
+  }
+}

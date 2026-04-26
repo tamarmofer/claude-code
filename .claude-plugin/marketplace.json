@@ -145,6 +145,17 @@
       },
       "source": "./plugins/security-guidance",
       "category": "security"
+    },
+    {
+      "name": "inbox-command",
+      "description": "Triage Outlook + Gmail three times a day. Flags what needs you, drafts replies in your tone, classifies senders into yes/pass/silence. Drafts-only by default.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Tamar Mofer",
+        "email": "tamar@dundeeus.com"
+      },
+      "source": "./plugins/inbox-command",
+      "category": "productivity"
     }
   ]
 }

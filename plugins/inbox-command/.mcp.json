@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "composio": {
+      "type": "sse",
+      "url": "${COMPOSIO_MCP_URL}"
+    }
+  }
+}
