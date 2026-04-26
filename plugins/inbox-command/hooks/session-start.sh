@@ -18,21 +18,19 @@ fi
 last_run="${state_dir}/last-run.md"
 state="${state_dir}/state.json"
 
-if [ ! -f "$last_run" ]; then
-  exit 0
-fi
+# Surface a stale run summary if the most recent scan is more than 8h old.
+if [ -f "$last_run" ]; then
+  now_epoch=$(date +%s)
+  mtime_epoch=$(stat -c %Y "$last_run" 2>/dev/null || stat -f %m "$last_run" 2>/dev/null || echo 0)
+  age_hours=$(( (now_epoch - mtime_epoch) / 3600 ))
 
-# How old is the most recent run, in hours?
-now_epoch=$(date +%s)
-mtime_epoch=$(stat -c %Y "$last_run" 2>/dev/null || stat -f %m "$last_run" 2>/dev/null || echo 0)
-age_hours=$(( (now_epoch - mtime_epoch) / 3600 ))
-
-if [ "$age_hours" -ge 8 ]; then
-  echo "## Inbox Command — last run was ${age_hours}h ago"
-  echo ""
-  cat "$last_run"
-  echo ""
-  echo "Run \`/inbox-command:scan\` to refresh, or wait for the next scheduled run."
+  if [ "$age_hours" -ge 8 ]; then
+    echo "## Inbox Command — last run was ${age_hours}h ago"
+    echo ""
+    cat "$last_run"
+    echo ""
+    echo "Run \`/inbox-command:scan\` to refresh, or wait for the next scheduled run."
+  fi
 fi
 
 # Nudge if tone profile is still the placeholder.

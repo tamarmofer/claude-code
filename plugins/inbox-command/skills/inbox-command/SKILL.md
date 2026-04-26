@@ -134,19 +134,19 @@ If `tone-profile.md` still says "PLACEHOLDER — run bootstrap-tone.ps1," compos
 
 ## Sender classification taxonomy
 
-`references/sender-rules.md` is YAML inside a fenced block:
+`references/sender-rules.md` is YAML inside a fenced block. Verdict keys are **quoted** because `yes` is a YAML 1.1 boolean and would otherwise parse to `True`:
 
 ```yaml
-yes:
+"yes":
   - domain: stripe.com
   - sender: ceo@dundeeus.com
-pass:
+"pass":
   - subject_keywords: [partnership, sponsorship, podcast invite, "guest post"]
   - domain_pattern: "*.recruiter.com"
-silence:
+"silence":
   - domain_pattern: "noreply.*"
   - subject_keywords: [unsubscribe, newsletter, "view in browser"]
-auto_send: []   # add `pass` first, then `yes`. needs_me never sends.
+auto_send: []   # add "pass" first, then "yes". needs_me never sends.
 ```
 
 Match precedence: exact sender > exact domain > domain_pattern > subject_keywords. First match wins.
