@@ -829,6 +829,19 @@ If build failed:
 
 ---
 
-For detailed frontmatter field specifications, see `references/frontmatter-reference.md`.
-For plugin-specific features and patterns, see `references/plugin-features-reference.md`.
-For command pattern examples, see `examples/` directory.
+## Additional Resources
+
+### References
+
+- `references/frontmatter-reference.md` — complete YAML frontmatter field specifications
+- `references/plugin-features-reference.md` — plugin-specific patterns (`${CLAUDE_PLUGIN_ROOT}`, discovery, integration)
+- `references/interactive-commands.md` — user-interaction patterns including `AskUserQuestion`
+- `references/advanced-workflows.md` — multi-step command sequences and orchestration
+- `references/testing-strategies.md` — how to test slash commands
+- `references/documentation-patterns.md` — documenting commands for users and teammates
+- `references/marketplace-considerations.md` — publishing and distribution
+
+### Examples
+
+- `examples/simple-commands.md` — 10 standalone command examples
+- `examples/plugin-commands.md` — 10 plugin-specific command examples

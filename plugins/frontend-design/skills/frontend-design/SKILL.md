@@ -1,12 +1,14 @@
 ---
 name: frontend-design
-description: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.
+description: This skill should be used when the user asks to "build a landing page", "design a UI", "create a hero section", "make a dashboard", "build a component", "style this page", "make a portfolio site", or any request to design or implement frontend interfaces (HTML, CSS, React, Vue). Produces distinctive, production-grade code with high design quality and avoids generic AI aesthetics.
 license: Complete terms in LICENSE.txt
 ---
 
-This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
+# Frontend Design
 
-The user provides frontend requirements: a component, page, application, or interface to build. They may include context about the purpose, audience, or technical constraints.
+Create distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement working code with exceptional attention to aesthetic detail and creative choices.
+
+The user supplies frontend requirements—a component, page, application, or interface—possibly with context about purpose, audience, or technical constraints.
 
 ## Design Thinking
 

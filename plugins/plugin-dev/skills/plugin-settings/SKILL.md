@@ -368,7 +368,7 @@ fi
 
 **Important:** Settings changes require Claude Code restart.
 
-Document in your README:
+Document this in the plugin README:
 
 ```markdown
 ## Changing Settings

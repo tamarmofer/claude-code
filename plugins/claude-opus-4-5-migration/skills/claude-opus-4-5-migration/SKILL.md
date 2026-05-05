@@ -1,11 +1,11 @@
 ---
 name: claude-opus-4-5-migration
-description: Migrate prompts and code from Claude Sonnet 4.0, Sonnet 4.5, or Opus 4.1 to Opus 4.5. Use when the user wants to update their codebase, prompts, or API calls to use Opus 4.5. Handles model string updates and prompt adjustments for known Opus 4.5 behavioral differences. Does NOT migrate Haiku 4.5.
+description: This skill should be used when the user asks to "migrate to Opus 4.5", "upgrade to Claude Opus 4.5", "update model strings to Opus 4.5", "switch from Sonnet to Opus 4.5", or "move my prompts to Opus 4.5". Handles model string updates across Anthropic API, Bedrock, Vertex, and Azure, plus prompt adjustments for known Opus 4.5 behavioral differences. Does NOT migrate Haiku models or migrations targeting newer Opus versions.
 ---
 
 # Opus 4.5 Migration Guide
 
-One-shot migration from Sonnet 4.0, Sonnet 4.5, or Opus 4.1 to Opus 4.5.
+One-shot migration from Sonnet 4.0, Sonnet 4.5, or Opus 4.1 to Opus 4.5. For migrations targeting Opus 4.6 or 4.7, use a separate up-to-date migration skill—this guide's prompt adjustments are 4.5-specific.
 
 ## Migration Workflow
 

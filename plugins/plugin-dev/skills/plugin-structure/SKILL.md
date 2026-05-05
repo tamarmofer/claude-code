@@ -473,4 +473,15 @@ my-plugin/
 
 ---
 
-For detailed examples and advanced patterns, see files in `references/` and `examples/` directories.
+## Additional Resources
+
+### References
+
+- `references/manifest-reference.md` — complete `plugin.json` field reference, path resolution rules, minimal vs. full manifest examples
+- `references/component-patterns.md` — advanced organization patterns for commands, agents, skills, hooks, scripts, and cross-component integration
+
+### Examples
+
+- `examples/minimal-plugin.md` — simplest possible plugin (single command, minimal manifest)
+- `examples/standard-plugin.md` — production-grade plugin with multiple components and integration
+- `examples/advanced-plugin.md` — enterprise plugin with MCP server, shared libraries, configuration, and monitoring
