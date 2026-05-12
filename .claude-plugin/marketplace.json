@@ -145,6 +145,17 @@
       },
       "source": "./plugins/security-guidance",
       "category": "security"
+    },
+    {
+      "name": "market-comps",
+      "description": "Research comparable property sales and rental data for a given address to support real estate market analysis",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "source": "./plugins/market-comps",
+      "category": "productivity"
     }
   ]
 }

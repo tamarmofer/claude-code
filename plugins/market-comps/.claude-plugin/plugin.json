@@ -1,0 +1,10 @@
+{
+  "name": "market-comps",
+  "version": "1.0.0",
+  "description": "Research comparable property sales and rental data for a given address to support real estate market analysis",
+  "author": {
+    "name": "Anthropic",
+    "email": "support@anthropic.com"
+  },
+  "keywords": ["real-estate", "comparables", "property", "valuation", "CMA"]
+}
