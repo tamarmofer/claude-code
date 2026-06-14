@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""Trash Google Drive files listed in a JSON manifest.
+"""Trash Google Drive files listed in a JSON manifest, OR sweep all 4-byte
+stub files in a given folder.
 
 Usage:
-    # Dry run (default) — prints what would be trashed, makes no changes:
+    # Manifest mode (default). Dry run shows what would be trashed:
     python delete_dupes.py duplicates.json
+    python delete_dupes.py duplicates.json --commit                # actually trash
+    python delete_dupes.py duplicates.json --commit --permanent    # hard delete
 
-    # Actually move files to Drive Trash (reversible for ~30 days):
-    python delete_dupes.py duplicates.json --commit
-
-    # Permanently delete instead of trashing (irreversible):
-    python delete_dupes.py duplicates.json --commit --permanent
+    # Sweep mode — trash every 4-byte file in the given Drive folder.
+    # Catches sync stubs not enumerated in the manifest:
+    python delete_dupes.py --sweep-stubs 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ
+    python delete_dupes.py --sweep-stubs <folderId> --commit
 
 Auth:
     Set GOOGLE_APPLICATION_CREDENTIALS to a service-account JSON, OR run
@@ -87,16 +89,47 @@ def trash_file(service, file_id: str, permanent: bool) -> None:
         ).execute()
 
 
+def sweep_stub_folder(service, folder_id: str) -> list[dict]:
+    """Return every 4-byte file directly under folder_id."""
+    out: list[dict] = []
+    page_token = None
+    while True:
+        resp = service.files().list(
+            q=f"'{folder_id}' in parents and trashed = false",
+            fields="nextPageToken, files(id, name, size, mimeType)",
+            pageSize=1000,
+            pageToken=page_token,
+            supportsAllDrives=True,
+            includeItemsFromAllDrives=True,
+        ).execute()
+        for f in resp.get("files", []):
+            if f.get("size") == "4":
+                out.append({"id": f["id"], "name": f.get("name", ""),
+                            "reason": f"4-byte stub in folder {folder_id}"})
+        page_token = resp.get("nextPageToken")
+        if not page_token:
+            return out
+
+
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("manifest", help="Path to duplicates.json")
+    p.add_argument("manifest", nargs="?", help="Path to duplicates.json (omit with --sweep-stubs)")
     p.add_argument("--commit", action="store_true", help="Actually delete (default: dry run)")
     p.add_argument("--permanent", action="store_true", help="Skip trash, delete permanently")
     p.add_argument("--limit", type=int, default=0, help="Only process first N items")
+    p.add_argument("--sweep-stubs", metavar="FOLDER_ID",
+                   help="Sweep mode: trash every 4-byte file in this Drive folder")
     args = p.parse_args()
 
-    data = json.loads(Path(args.manifest).read_text())
-    items = data["items"]
+    if args.sweep_stubs:
+        service = build_service()
+        items = sweep_stub_folder(service, args.sweep_stubs)
+        print(f"Found {len(items)} 4-byte stub files in folder {args.sweep_stubs}")
+    else:
+        if not args.manifest:
+            p.error("Provide a manifest path, or use --sweep-stubs FOLDER_ID")
+        data = json.loads(Path(args.manifest).read_text())
+        items = data["items"]
     if args.limit:
         items = items[: args.limit]
 
@@ -111,7 +144,7 @@ def main() -> int:
         print(f"\nRun again with --commit to actually do it.")
         return 0
 
-    service = build_service()
+    service = locals().get("service") or build_service()
     ok = 0
     failed: list[tuple[str, str]] = []
     for i, it in enumerate(items, 1):
