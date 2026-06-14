@@ -33,27 +33,30 @@ Can include markdown formatting, warnings, suggestions, etc.
 - Be descriptive and action-oriented
 - Start with verb: warn, prevent, block, require, check
 
-**enabled** (required): Boolean to activate/deactivate
-- `true`: Rule is active
+**enabled** (optional, defaults to `true`): Boolean to activate/deactivate
+- `true` (default): Rule is active
 - `false`: Rule is disabled (won't trigger)
 - Can toggle without deleting rule
 
-**event** (required): Which hook event to trigger on
+**event** (optional, defaults to `all`): Which hook event to trigger on
 - `bash`: Bash tool commands
 - `file`: Edit, Write, MultiEdit tools
 - `stop`: When agent wants to stop
 - `prompt`: When user submits a prompt
-- `all`: All events
+- `all` (default): All events
+
+**tool_matcher** (optional): Restrict to specific tools by name, regex, or `*` for all. Useful for cross-event rules (e.g., `Bash|Edit`).
 
 **action** (optional): What to do when rule matches
 - `warn`: Show message but allow operation (default)
-- `block`: Prevent operation (PreToolUse) or stop session (Stop events)
+- `block`: Prevent operation. Only takes effect on PreToolUse and Stop events; ignored on PostToolUse.
 - If omitted, defaults to `warn`
 
 **pattern** (simple format): Regex pattern to match
 - Used for simple single-condition rules
-- Matches against command (bash) or new_text (file)
-- Python regex syntax
+- Matches against `command` (bash event) or `new_text`/`content` (file event)
+- Python regex syntax, **matched case-insensitively** — to force case-sensitivity, use inline flags like `(?-i:API_KEY)`
+- For `stop` and `prompt` events, use the conditions form below instead — simple `pattern:` does not apply
 
 **Example:**
 ```yaml
@@ -86,6 +89,8 @@ You're adding an API key to a .env file. Ensure this file is in .gitignore!
 - `field`: Which field to check
   - For bash: `command`
   - For file: `file_path`, `new_text`, `old_text`, `content`
+  - For prompt: `user_prompt`
+  - For stop: `reason` (or any field that exists in the stop payload)
 - `operator`: How to match
   - `regex_match`: Regex pattern matching
   - `contains`: Substring check
@@ -181,12 +186,15 @@ Console.log in TypeScript file!
 
 ### stop Events
 
-Match when agent wants to stop (completion checks):
+Match when agent wants to stop (completion checks). Stop events have no tool input — use the `conditions` form with `field: reason` (or any always-present field) and a permissive pattern:
 
 ```markdown
 ---
 event: stop
-pattern: .*
+conditions:
+  - field: reason
+    operator: regex_match
+    pattern: .*
 ---
 
 Before stopping, verify:
@@ -202,7 +210,7 @@ Before stopping, verify:
 
 ### prompt Events
 
-Match user prompt content (advanced):
+Match user prompt content using the `user_prompt` field:
 
 ```markdown
 ---

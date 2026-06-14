@@ -406,26 +406,18 @@ Plugin hooks merge with user's hooks and run in parallel.
 
 **Regex patterns:**
 ```json
-"matcher": "mcp__.*__delete.*"  // All MCP delete tools
+"matcher": "mcp__.*__delete.*"
 ```
+Matches all MCP delete tools.
 
-**Note:** Matchers are case-sensitive.
+**Note:** Matchers are regex strings (not glob patterns). They are case-sensitive. Use `|` for alternation; omit `matcher` entirely (or use an empty string) to match all tools.
 
 ### Common Patterns
 
-```json
-// All MCP tools
-"matcher": "mcp__.*"
-
-// Specific plugin's MCP tools
-"matcher": "mcp__plugin_asana_.*"
-
-// All file operations
-"matcher": "Read|Write|Edit"
-
-// Bash commands only
-"matcher": "Bash"
-```
+- `"mcp__.*"` — all MCP tools
+- `"mcp__plugin_asana_.*"` — a specific plugin's MCP tools
+- `"Read|Write|Edit"` — all file operations
+- `"Bash"` — only Bash commands
 
 ## Security Best Practices
 
@@ -505,9 +497,9 @@ All matching hooks run **in parallel**:
     {
       "matcher": "Write",
       "hooks": [
-        {"type": "command", "command": "check1.sh"},  // Parallel
-        {"type": "command", "command": "check2.sh"},  // Parallel
-        {"type": "prompt", "prompt": "Validate..."}   // Parallel
+        {"type": "command", "command": "check1.sh"},
+        {"type": "command", "command": "check2.sh"},
+        {"type": "prompt", "prompt": "Validate..."}
       ]
     }
   ]
@@ -601,6 +593,17 @@ Hooks are validated when Claude Code starts:
 Use `/hooks` command to review loaded hooks in current session.
 
 ## Debugging Hooks
+
+### Hook Didn't Fire?
+
+The most common hook failure mode. Walk this checklist:
+
+1. **Is the hook loaded?** Run `/hooks` and confirm the hook appears in the output.
+2. **Did the plugin reload?** Hook edits don't take effect until Claude Code restarts or the plugin is reloaded.
+3. **Does the matcher actually match?** Matchers are regex strings (case-sensitive). Test with: `echo "ToolName" | grep -E "your-matcher"`.
+4. **Is the script executable?** Run `chmod +x` on command-hook scripts.
+5. **Is the JSON valid?** Validate `hooks.json` with `jq . hooks/hooks.json`.
+6. **Is the path right?** Use `${CLAUDE_PLUGIN_ROOT}` in plugin paths—relative paths resolve to the user's CWD, not the plugin root.
 
 ### Enable Debug Mode
 

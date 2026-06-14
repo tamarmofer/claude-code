@@ -35,7 +35,9 @@ Remove the `context-1m-2025-08-07` beta header if present—it is not yet suppor
 | Anthropic API (1P) | `claude-opus-4-5-20251101` |
 | AWS Bedrock | `anthropic.claude-opus-4-5-20251101-v1:0` |
 | Google Vertex AI | `claude-opus-4-5@20251101` |
-| Azure AI Foundry | `claude-opus-4-5-20251101` |
+| Azure AI Foundry | deployment name (chosen by user); underlying model `claude-opus-4-5-20251101` |
+
+**Bedrock note:** On-demand invocations of recent Claude models on Bedrock require a regional inference-profile ID with prefix (`us.`, `eu.`, `apac.`), e.g., `us.anthropic.claude-opus-4-5-20251101-v1:0`.
 
 ### Source Model Strings to Replace
 
@@ -43,7 +45,7 @@ Remove the `context-1m-2025-08-07` beta header if present—it is not yet suppor
 |--------------|-------------------|-------------|------------------|
 | Sonnet 4.0 | `claude-sonnet-4-20250514` | `anthropic.claude-sonnet-4-20250514-v1:0` | `claude-sonnet-4@20250514` |
 | Sonnet 4.5 | `claude-sonnet-4-5-20250929` | `anthropic.claude-sonnet-4-5-20250929-v1:0` | `claude-sonnet-4-5@20250929` |
-| Opus 4.1 | `claude-opus-4-1-20250422` | `anthropic.claude-opus-4-1-20250422-v1:0` | `claude-opus-4-1@20250422` |
+| Opus 4.1 | `claude-opus-4-1-20250805` | `anthropic.claude-opus-4-1-20250805-v1:0` | `claude-opus-4-1@20250805` |
 
 **Do NOT migrate**: Any Haiku models (e.g., `claude-haiku-4-5-20251001`).
 

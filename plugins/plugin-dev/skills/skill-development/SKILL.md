@@ -88,6 +88,17 @@ version: 0.1.0
 ---
 ```
 
+**What makes a good description:**
+
+- 3-7 quoted trigger phrases users would actually say. Mix exact verb forms ("create a hook") with topic keywords ("hooks.json").
+- One concrete-scenarios sentence at the end ("Covers scenarios such as X, Y, Z") rather than a generic capability claim ("Provides comprehensive guidance").
+- Disambiguate from sibling skills. If two skills share a phrase, narrow each description so Claude picks the right one. Example: agent-development vs. command-development both touch "frontmatter"—each description names its specific scope.
+- Avoid generic verbs like "help with", "work with", "understand"—they trigger on everything.
+
+**Trigger test** before shipping: draft 3 queries the skill *should* load on and 3 queries it should *not* load on. Read the description and predict the result for each. Adjust the description until predictions match intent.
+
+**Versioning:** bump patch on description tweaks, minor on body changes, major on workflow-breaking changes.
+
 **Body** — imperative/infinitive form, target 1,500-2,000 words. Reference supporting files explicitly:
 
 ```markdown
