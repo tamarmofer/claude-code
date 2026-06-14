@@ -64,105 +64,54 @@ Add `mcpServers` field to plugin.json:
 
 ## MCP Server Types
 
-### stdio (Local Process)
+Four server types cover the integration patterns:
 
-Execute local MCP servers as child processes. Best for local tools and custom servers.
+| Type | Use for | Config field |
+|------|---------|--------------|
+| `stdio` | Local child processes (NPM packages, custom servers, local DBs) | `command`, `args`, `env` |
+| `sse` | Hosted servers with OAuth (Asana, GitHub) | `type: sse`, `url` |
+| `http` | REST API with token auth | `type: http`, `url`, `headers` |
+| `ws` | Real-time streaming with persistent connections | `type: ws`, `url`, `headers` |
 
-**Configuration:**
+**stdio example:**
 ```json
 {
   "filesystem": {
     "command": "npx",
     "args": ["-y", "@modelcontextprotocol/server-filesystem", "/allowed/path"],
-    "env": {
-      "LOG_LEVEL": "debug"
-    }
+    "env": { "LOG_LEVEL": "debug" }
   }
 }
 ```
 
-**Use cases:**
-- File system access
-- Local database connections
-- Custom MCP servers
-- NPM-packaged MCP servers
-
-**Process management:**
-- Claude Code spawns and manages the process
-- Communicates via stdin/stdout
-- Terminates when Claude Code exits
-
-### SSE (Server-Sent Events)
-
-Connect to hosted MCP servers with OAuth support. Best for cloud services.
-
-**Configuration:**
+**sse example:**
 ```json
-{
-  "asana": {
-    "type": "sse",
-    "url": "https://mcp.asana.com/sse"
-  }
-}
+{ "asana": { "type": "sse", "url": "https://mcp.asana.com/sse" } }
 ```
 
-**Use cases:**
-- Official hosted MCP servers (Asana, GitHub, etc.)
-- Cloud services with MCP endpoints
-- OAuth-based authentication
-- No local installation needed
-
-**Authentication:**
-- OAuth flows handled automatically
-- User prompted on first use
-- Tokens managed by Claude Code
-
-### HTTP (REST API)
-
-Connect to RESTful MCP servers with token authentication.
-
-**Configuration:**
+**http example:**
 ```json
 {
   "api-service": {
     "type": "http",
     "url": "https://api.example.com/mcp",
-    "headers": {
-      "Authorization": "Bearer ${API_TOKEN}",
-      "X-Custom-Header": "value"
-    }
+    "headers": { "Authorization": "Bearer ${API_TOKEN}" }
   }
 }
 ```
 
-**Use cases:**
-- REST API-based MCP servers
-- Token-based authentication
-- Custom API backends
-- Stateless interactions
-
-### WebSocket (Real-time)
-
-Connect to WebSocket MCP servers for real-time bidirectional communication.
-
-**Configuration:**
+**ws example:**
 ```json
 {
   "realtime-service": {
     "type": "ws",
     "url": "wss://mcp.example.com/ws",
-    "headers": {
-      "Authorization": "Bearer ${TOKEN}"
-    }
+    "headers": { "Authorization": "Bearer ${TOKEN}" }
   }
 }
 ```
 
-**Use cases:**
-- Real-time data streaming
-- Persistent connections
-- Push notifications from server
-- Low-latency requirements
+For process lifecycle, authentication flows, and per-type troubleshooting, see `references/server-types.md`.
 
 ## Environment Variable Expansion
 
