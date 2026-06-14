@@ -1,25 +1,1001 @@
 {
   "_comment": "High-confidence duplicates identified by scanning tamarmofer@gmail.com Drive. Run delete_dupes.py with --commit to trash these (recoverable for ~30 days). The 'review' section below requires human judgment before deletion and is NOT processed by the script.",
   "items": [
-    {"id": "15l2kDpJk11jL4OGJQpG2j5rSLCVcwuXU", "name": "~$420_E_80th_Rent_Comps_v4_redline.xlsx", "reason": "Office lock file (~$ prefix)"},
-    {"id": "1IVokSR77FMkZb6_dcsTMGAaj7gqWSS_P", "name": "~$scussion_with_nadav_1.docx", "reason": "Office lock file (~$ prefix)"},
-
-    {"id": "1A_tAtd4WbTScPUmkD4xiNcYBGZjlxjCf", "name": "SUMMARY.md (older copy)", "reason": "Duplicate of 1IHaaZVM85xRDIzJtX1nBUTelmCy6Xnkn (same name+size 6342B, older folder)"},
-    {"id": "1YqRthOoQLulK-yL5jyj3kCT9s2pRBSDs", "name": "dob_ecb_violations_BBL_1019400056.json (older copy)", "reason": "Duplicate of 1anYiozLlhd5eouEg7TMutijswYmbnuHb (same name+size 3B)"},
-    {"id": "1j1Zvk08GUloRJmLGh4ihgLUQ0BAz1yq8", "name": "dob_now_boiler_reports_BIN_1058855.json (older copy)", "reason": "Duplicate of 18__FDW9GW5WP7udWqQT-hC_ESBLC-ElT (same name+size 4501B)"},
-    {"id": "19rF2tSc7N_nCXt6fCczOgraTw4nuute5", "name": "dob_violations_BBL_1019400056.json (older copy)", "reason": "Duplicate of 1MA8msXVmo7JxsqBVM-im32yKlXBce2GD (same name+size 1375B)"},
-    {"id": "1eJVuY9cG_oVvpZKUGiMU1Be16Z-xb7KR", "name": "dob_safety_violations_BIN_1058854_1058855.json (older copy)", "reason": "Duplicate of 1sSnOWiVa5H9jNH-Skn0MbcJ5kHn5pfW6 (same name+size 9235B)"},
-
-    {"id": "1DeMvGbe4nSN-LxSeL7ox5VnuWw7uqk9G", "name": "housing-comparison_1.html", "reason": "Duplicate of housing-comparison.html (same size 7613B, same folder)"},
-    {"id": "1FLYyJSwvd1Wo-4iKuyV0yYs6V_-oU2ek", "name": "direct_member_reimbursement (1).pdf", "reason": "Duplicate of direct_member_reimbursement.pdf (same size 80092B)"},
-    {"id": "1E6tWk8WU46NrOvGPow8LNrPj02trsGlf", "name": "2026_LOI_548_W_28th_St_v2_1.docx", "reason": "Duplicate of 2026_LOI_548_W_28th_St_v2.docx (same size 33221B)"},
-
-    {"id": "12buZ8uz_w5r5KHOMLQXoqnAif0ym_XnG", "name": "InvoiceReport.pdf (4-byte stub)", "reason": "4-byte sync stub; full file exists at 1Z6QjKBAu7UQoEfp2sZwrsBIBIm_0TvbR (660608B)"},
-    {"id": "1C1QBHN_MGeOhoLc6H66nB_5pUETKYcaM", "name": "WWW.pdf (4-byte stub)", "reason": "4-byte sync stub; full file exists at 1RQq4cZf534DVeKwLer6isftBF6kkVM7I (104167B)"},
-    {"id": "1In-zcdkZlUZxawhQAHdQnHEyiTEsoW_l", "name": "may2026_LOCs.xlsx (4-byte stub)", "reason": "4-byte sync stub; full file exists at 1oSHxhzivLL4Zmr2lj43dif49nqtR2JPF (19483B)"},
-    {"id": "1wA7RakXdq9GHzuN-kJ0uIVuzotdSF1Uz", "name": "roro_nexus.xlsx (4-byte stub)", "reason": "4-byte sync stub; full file exists at 1hKTCTtgPL1ofNAnfUVPso2kONa5wdnb1 (10999B)"},
-    {"id": "1UqBuXjfuJ0tyELynDeuSumgLqqA6nRih", "name": "The Ashford_UW Model 5.2026 OB.8_ext.xlsx (4-byte stub)", "reason": "4-byte sync stub; full file exists at 1s0JXOXNg0xb_jiAC-tpCpdmBSuIi4fn_ (1754439B)"},
-    {"id": "1Ag0thiJJwQ1jzX7Aaggv0mpi06QgrH8M", "name": "F1_2025_IE_w_Variance_Notes.pdf (4-byte stub)", "reason": "4-byte sync stub; full file exists at 18y6Mn906l2aCzGS7Ut737BmiOWZXQaDM (865197B)"}
+    {
+      "id": "15l2kDpJk11jL4OGJQpG2j5rSLCVcwuXU",
+      "name": "~$420_E_80th_Rent_Comps_v4_redline.xlsx",
+      "reason": "Office lock file (~$ prefix)"
+    },
+    {
+      "id": "1IVokSR77FMkZb6_dcsTMGAaj7gqWSS_P",
+      "name": "~$scussion_with_nadav_1.docx",
+      "reason": "Office lock file (~$ prefix)"
+    },
+    {
+      "id": "1A_tAtd4WbTScPUmkD4xiNcYBGZjlxjCf",
+      "name": "SUMMARY.md (older copy)",
+      "reason": "Duplicate of 1IHaaZVM85xRDIzJtX1nBUTelmCy6Xnkn (same name+size 6342B, older folder)"
+    },
+    {
+      "id": "1YqRthOoQLulK-yL5jyj3kCT9s2pRBSDs",
+      "name": "dob_ecb_violations_BBL_1019400056.json (older copy)",
+      "reason": "Duplicate of 1anYiozLlhd5eouEg7TMutijswYmbnuHb (same name+size 3B)"
+    },
+    {
+      "id": "1j1Zvk08GUloRJmLGh4ihgLUQ0BAz1yq8",
+      "name": "dob_now_boiler_reports_BIN_1058855.json (older copy)",
+      "reason": "Duplicate of 18__FDW9GW5WP7udWqQT-hC_ESBLC-ElT (same name+size 4501B)"
+    },
+    {
+      "id": "19rF2tSc7N_nCXt6fCczOgraTw4nuute5",
+      "name": "dob_violations_BBL_1019400056.json (older copy)",
+      "reason": "Duplicate of 1MA8msXVmo7JxsqBVM-im32yKlXBce2GD (same name+size 1375B)"
+    },
+    {
+      "id": "1eJVuY9cG_oVvpZKUGiMU1Be16Z-xb7KR",
+      "name": "dob_safety_violations_BIN_1058854_1058855.json (older copy)",
+      "reason": "Duplicate of 1sSnOWiVa5H9jNH-Skn0MbcJ5kHn5pfW6 (same name+size 9235B)"
+    },
+    {
+      "id": "1DeMvGbe4nSN-LxSeL7ox5VnuWw7uqk9G",
+      "name": "housing-comparison_1.html",
+      "reason": "Duplicate of housing-comparison.html (same size 7613B, same folder)"
+    },
+    {
+      "id": "1FLYyJSwvd1Wo-4iKuyV0yYs6V_-oU2ek",
+      "name": "direct_member_reimbursement (1).pdf",
+      "reason": "Duplicate of direct_member_reimbursement.pdf (same size 80092B)"
+    },
+    {
+      "id": "1E6tWk8WU46NrOvGPow8LNrPj02trsGlf",
+      "name": "2026_LOI_548_W_28th_St_v2_1.docx",
+      "reason": "Duplicate of 2026_LOI_548_W_28th_St_v2.docx (same size 33221B)"
+    },
+    {
+      "id": "12buZ8uz_w5r5KHOMLQXoqnAif0ym_XnG",
+      "name": "InvoiceReport.pdf (4-byte stub)",
+      "reason": "4-byte sync stub; full file exists at 1Z6QjKBAu7UQoEfp2sZwrsBIBIm_0TvbR (660608B)"
+    },
+    {
+      "id": "1C1QBHN_MGeOhoLc6H66nB_5pUETKYcaM",
+      "name": "WWW.pdf (4-byte stub)",
+      "reason": "4-byte sync stub; full file exists at 1RQq4cZf534DVeKwLer6isftBF6kkVM7I (104167B)"
+    },
+    {
+      "id": "1In-zcdkZlUZxawhQAHdQnHEyiTEsoW_l",
+      "name": "may2026_LOCs.xlsx (4-byte stub)",
+      "reason": "4-byte sync stub; full file exists at 1oSHxhzivLL4Zmr2lj43dif49nqtR2JPF (19483B)"
+    },
+    {
+      "id": "1wA7RakXdq9GHzuN-kJ0uIVuzotdSF1Uz",
+      "name": "roro_nexus.xlsx (4-byte stub)",
+      "reason": "4-byte sync stub; full file exists at 1hKTCTtgPL1ofNAnfUVPso2kONa5wdnb1 (10999B)"
+    },
+    {
+      "id": "1UqBuXjfuJ0tyELynDeuSumgLqqA6nRih",
+      "name": "The Ashford_UW Model 5.2026 OB.8_ext.xlsx (4-byte stub)",
+      "reason": "4-byte sync stub; full file exists at 1s0JXOXNg0xb_jiAC-tpCpdmBSuIi4fn_ (1754439B)"
+    },
+    {
+      "id": "1Ag0thiJJwQ1jzX7Aaggv0mpi06QgrH8M",
+      "name": "F1_2025_IE_w_Variance_Notes.pdf (4-byte stub)",
+      "reason": "4-byte sync stub; full file exists at 18y6Mn906l2aCzGS7Ut737BmiOWZXQaDM (865197B)"
+    },
+    {
+      "id": "185nVj0SAZPAo3Bua-6WTmfyV7ZgwlMhf",
+      "name": "Dundee Acquisitions Mandate v3.docx (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1E9CWGcnA9HDdqu8DgHwjt2xXWMDXt3-J",
+      "name": "ALLONGE3.docx (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1tJCBi_WQZ5EmI-5sVsXXHAmVT8X_18Uw",
+      "name": "Outlook-gk2ddeic.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1JBf0IJthGUetU2Eg1iI34QIGtGEL6j1E",
+      "name": "M-820-33_SFR_2025_DRAFT_V2.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1dr9LglDx5tVvZPkq5fFRf7XJcmWCmky-",
+      "name": "M-820-33_RPIE_25_DRAFT_V2.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1byUUOquu7aFO8WanXbAKQ-p4IXEER8D_",
+      "name": "image566540.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "14RKnBsSxBuloFLY_DP7GS-32jq83O_Lc",
+      "name": "M-820-33_rpie_2026_comm_rent_roll.xlsx (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1i318WLdR-Iez-2syGGsmK3KUsrGdUyEM",
+      "name": "M-820-33_RPIE_25_DRAFT.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1L9Bclj-n-Kf-jjgV10FHOmgTN2UViTaZ",
+      "name": "Resume - Viet Nguyen.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1w07-6rjVll7Xna58E9giCbr3PFaIT1kR",
+      "name": "image608441.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1o5xldpsiEfAchdvVoZ0fam1UtIZuMLfp",
+      "name": "image245616.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1XL-wye-__EwIvVYpqkIZMi_SFrAnEZpv",
+      "name": "image051444.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1KrRIzRZUUj9R8tAlCCU3hFxM9ajfsSK7",
+      "name": "image351064.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "16povA5bzXeUUoBaJviRno__s6auQzuaS",
+      "name": "image432326.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1DnPuexptLPbp1eGl2_svCdW3BX52DRYf",
+      "name": "image521060.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1AcVGTcnvEceb8DI7TYPYGduzwDLPhzgq",
+      "name": "image323207.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1yf9WPDWy01EWfzYQfOENLg7fa37CTpfo",
+      "name": "457b1528-92f7-4dfd-beaa-9e80b3eba796 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1AcJr6C0YBc1mmrFjfsehysQ4pAuIurOo",
+      "name": "5568de5e-190a-4f2a-bb85-c778c842c1a9 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1tMhqke2e7o9v-9SQQDViyj3ZVH2hFZGv",
+      "name": "9693a861-a5cd-4b69-a808-64a77905625a (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1hToLGUfrYpC5jbn2i38S_9u42iFOXJFP",
+      "name": "4bc7d5eb-25ec-4c44-892d-ec5deb0a1749 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1mUx8b_DAtjy0pObz-wiy_6l5ma09gJ_D",
+      "name": "1550649.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1_OKY8iLgyW28jqUjM_Mw18lWtrheW7-h",
+      "name": "image410179.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1FLB0e7y3xrnKTqWdjfr-2PCe7tymjGRU",
+      "name": "image927319.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1kOyQhq1wK0AUaXEn-XcVNjaJw2otkj7N",
+      "name": "image700065.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1LDf7MUSQuBAGkH9MWTtzwJougRKeCan7",
+      "name": "image179273.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "11i_sxt3wpBTvLo8OYd685inkIUEg4Ysb",
+      "name": "image553238.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1vziIA9Mwf_SR0azpd4QvxdOfuSFscf4F",
+      "name": "Outlook-wnshz1ag.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1v_aSAfH8jXrwLZlAz-ADH9_OJsOfRccT",
+      "name": "image981686.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1DrqtNTF49uNuKLOoljmFDoYwA0Jx7v1G",
+      "name": "image015250.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1AqsOCTZjDS8e8nlNfJM839tBifZEYoCD",
+      "name": "31_35 Great Jones OM_KSR.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1t1pNBA36hvKV77C-CTAHm9Ogw0UNhfKq",
+      "name": "03fcbab2-6ac4-438e-9fcb-45017c9a00cb (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1I2LYJlrDsLMNsOvQeOX2_oNWLxEyz8pi",
+      "name": "117df4cd-4615-4411-9051-6fd414def206 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1GXSC3hhvaiIxJIbVPYQ6eYzzXnY3KbGq",
+      "name": "115fe39a-dc2c-4889-bf19-f91caebccf88 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1jW8h5ZMBodD2yzOTa1W_2eMEXntzWWbW",
+      "name": "9a8f39c6-8245-4af0-81ac-3dac63ffe67f (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1fCZW_WgiVOzsYr5tDDXy0-Y0Qopx2WD2",
+      "name": "6e85d160-6751-4380-a0e4-b1456800472f (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Rf6TbuzzUPE4U4Wkgzgm2RFiDp9e_sL2",
+      "name": "a4d232ee-d759-4df9-84dd-c2927a97e3f7 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1P6SXk-CZAp0U_Rw4RgurmVRIF21UvwOX",
+      "name": "b5005c26-159f-437f-826f-e65043000655 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1NTdRwLhM381i3-4qxE27ZZ3sI7xpRN2X",
+      "name": "41867009-4db5-4461-8483-ec849673b9a7 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "12h8gOcRqiwuu8XJfBwUq7WDjjaoLk1RH",
+      "name": "03f52d15-746f-42ad-ba19-09893eff039a (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1RU5ZXaymFZxcY51v1Bc0l-J6mr97Dp_L",
+      "name": "6.  Note 4937-7954-8561 v.1.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1zx8H6UfzPMytn8slovwx9a4jWpkHGEHW",
+      "name": "Closing signature package for Tamar Ofer.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1VRxm2UimElkj5cATPVfA7-2BQOF2ihEl",
+      "name": "Tamar signaute page to escrow agreement.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "12jHSB_eCLmo0obvGPgoIkSpzRH5_1dBT",
+      "name": "County UCC-3 266 West 135th Lotus LLC Lot 601.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1v6zbzJVSbWgGCKB1UakT4IuNmEirvpg5",
+      "name": "UCC- lot 562.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1CSwgyUehLPvWcvHXJTa6QolCXcF6dI6I",
+      "name": "Assignment Of Mortgage Final1.doc (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1JbMg96OQrssC1osKgY9g73IHJTF7VTNi",
+      "name": "Corrective Real Estate Note  Final1.docx (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1-xg4CmVC-A3M7HLp6iX02p5qese34Mp2",
+      "name": "Termination ALR Final1.docx (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1aIQruEb_KOb4ZVCLDesIEz_-R_CR8C5_",
+      "name": "zoesExpensesR007pqgqxCpt.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "14Iec-NBhKVAaiVUeCNK2cbxIHI9KyHg1",
+      "name": "Severance Agreement.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1LRZm5reY6tFWrqL1wJJOW8HEkT54AsLz",
+      "name": "image115968.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1c6sc4BHrCVKN3z8WqXmj-N7ApRzTBdy_",
+      "name": "image554300.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1bf0ssBuiWQeSLUk37vDEcfOiuYRaAi7B",
+      "name": "image544687.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1hwhIu-eP6VGZXTP4st4fGN8PNRj9hG_Z",
+      "name": "image272827.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1ZMsavaigBM5k8679KSXmLQVgsMKJrQiI",
+      "name": "OATH Updated (Cured) Sum # 012179192J.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1li5WO-nFUGej2D6AoNuTxsrtfs_sDfP6",
+      "name": "- FD Cure Letter Sum # 012179192J (7 W 18 St) 5-23-26.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1vplVAu4tDHHYsyrpcm9tBAsBOifXspDm",
+      "name": "image592743.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1us7OyrQmY04RXPJ3iR5g2nmr9mmLy-HU",
+      "name": "image042985.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1d471ex4d-O-Ol26cDlYWtEUBxKNVBUAh",
+      "name": "image893466.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "13hoqVXkA0mVqTeLueLszsnCRE9aHqe2_",
+      "name": "image734264.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1YQPm_bKvoK4j8wVYbuRHK8vIxl4hFRYZ",
+      "name": "image226495.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1X7aLFYC5-uthRddw4faqml5vw8AyY900",
+      "name": "image990272.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1LQpcXvfteYuKlCudywt_Kdgz04gsf5G1",
+      "name": "image724305.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Dn839DmJ0hNxXIGcUR0XQXYloXm1VJ63",
+      "name": "image229790.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1MqCitCGnNykgtp7kzYUqluJc8KjAVcDq",
+      "name": "image895334.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1cmtbBYBbCAP-CRIVwT-mGBDM164O6-4h",
+      "name": "image246383.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1vNkdmCI-WqFX2jusXB5-CUaQN60Vca2C",
+      "name": "1527 York - Pro Forma 05.2026.xlsx (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1f4jG4P_pcHe7SlYy0bBIqGmMpknmDUF7",
+      "name": "Outlook-Vedder.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1yeLfywwbGSbdJrHmyJLjq5X14y4-QxQK",
+      "name": "593dceab-3bef-4d4a-ae49-812f9445eb58 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Vh9axUt-taZHCm4YBVCDz2V3WvBIWznf",
+      "name": "a9aec27d-d67b-46a2-9bdd-0116942567ff (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "16m3p3UrymCOvfJHZpmpFPKX_nuWFYUQj",
+      "name": "f042c1f7-0a06-4f24-9637-0e754b5a39ab (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1FHzVyq7h8Xsh46PWRh0MSytl55RKJ17U",
+      "name": "image259743.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1XdLrmIA00I4GKSCE7IALnY2cOl_quAKp",
+      "name": "image975227.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1LbICJXF5CHptkWDWuLIOVb1m4eiVRPsa",
+      "name": "image825986.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Oy_7Tlm60oiuIhyjYbEgmS5LIca8TIA8",
+      "name": "image877868.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "167YNEr7UlYeHbfEFZtgQ1zImqPJD-2F9",
+      "name": "image201597.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1D2bzgp-3pqgng2xunS7vXGJmoxOZsTo8",
+      "name": "image600343.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "11S7I5GlrglKGFewPXVX1KuoRIVuwepEo",
+      "name": "image188282.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1SeYiPlcs_dVtvObPlHEh7E0kTl3KLtIs",
+      "name": "SEVERA_2.DOC (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "19YKVAd7kC1iHTj-B2oAW9J2bNXRggKYE",
+      "name": "image322256.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1cTtHTaKJMXkq-zVNFLY8QIJK1f1ZtdLU",
+      "name": "image286375.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1EbJCfNVw4eGiwuyKv-ldVc1M_J2nRTV-",
+      "name": "image351961.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Qu-pBUVLizKqfLEhgQAX1sKkrzmUQNCX",
+      "name": "image061752.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1wI2dGIftg80aqyenDgAeLakufv8vz7C1",
+      "name": "image425022.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1jzqtlHvQpoAjEc8DbbMPP7bqIxeRPWuE",
+      "name": "image891373.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1GqaQWqU21tN7uVZhXj-M3emnpyyD38zo",
+      "name": "image158241.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Zfb187zcXcr_uaVYgTKjBGYprwVC5Rgx",
+      "name": "image024382.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "144LW4hgxCZ80WHWXDsu7mrkcohberB3G",
+      "name": "image593351.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1JWvEGM8ENGqmTqG1DyRmqu_Pv6UD4rYq",
+      "name": "image166717.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "17XJH-SKSFQ8PXB2ZN8A89RpnX1oNK5L1",
+      "name": "image318896.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1xmh83SAVaWIVF6WM7EnLn_5dHXicNP3c",
+      "name": "image347404.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1zf7-3wiKCTh5vQXqqnNzA4cKrteZn66e",
+      "name": "image244695.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1b_J-aq53T4yfetHzPa9onhJqR9YidNVU",
+      "name": "image737494.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1XYj2fx6BJeHjvDMywbUFCS41f6Dyxyq0",
+      "name": "621541c9-4590-42cd-b151-4d463b275053 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1nHSEoH8m45tfWpQs6uQQ_HdjL1IJITh2",
+      "name": "41869337-c22f-4ceb-b82a-4ebab79238e3 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1eHSO3bjEP1AcDrXp1IbhI2y-QNZENhWM",
+      "name": "a5521338-8194-4a53-8ae5-25b3d27bc960 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1RlkU0oNa5fodBb3v9k-lWoyNsX_OfJhe",
+      "name": "f2603322-986b-46c4-a90f-977a34a2c1c7 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1TbXo364a_SL0tMHBfux0O28UK-syyEZL",
+      "name": "fee4c080-dfc5-4bb3-90f7-193c57738bdc (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1VAe5B_knM2qlAZJijq6ZI-d6nHgEH_CW",
+      "name": "c40c00d0-b9c9-444b-bf8b-2bddc9e07fdd (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1ZE1m3abV_WL1GVnQWjO7wxKjy8Tk28TT",
+      "name": "c4c1f478-9419-45d2-acb0-9a477daf7960 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1hKQWI1cVqd1eBuank6MF9VMt7Pwr9t31",
+      "name": "27ec3129-8045-430e-8ace-d913dcaa4599 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Q3l052mcXL-DZZeJNybPn6soRtJ2ds4u",
+      "name": "916fc020-1b0e-4362-824d-f80de43a1ebd (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1nmwfUIx32VmJhxM_sxQg6gI_z8nsd7XL",
+      "name": "image914989.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1JHzaV7pc07dTLt_7eEN1otnuTgmZn13C",
+      "name": "image451436.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1q7nn5ZsbCjPDYZLOV4PXtX5cDNtEwy4i",
+      "name": "image940832.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1PeMU4ZEAUkYeSF_DbN1ujQii7uCOcxWt",
+      "name": "image808538.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1uXlx1nO2mFPATR0rrtZAvbG6H-_wIF3a",
+      "name": "image958110.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1-aiaJNkDAruGEMc71rAZzhKj08yMoNa9",
+      "name": "image512293.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1EGKm2e700W58x6PflWwQ9WBdrcqIexXz",
+      "name": "image001906.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Ug5GaKOVmsbcVPnfOujmIaAsPxqtgdy0",
+      "name": "Connect - Letter Details.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1LW2urapZd2g1TZWv3l2s789Hyv5DoG_d",
+      "name": "Master AssetReview 2025 v14.xlsx (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1jy4fT-iap3oB93L42GOLlmt6uvS0bizX",
+      "name": "ee29a31b-2821-454e-99a4-894ba250abf3 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1KnCsvrBDVw-tj_ZrLuio6rEbLZDEkJb7",
+      "name": "9d49e346-1264-482f-8463-061635ce45ed (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1dA6iw8YAAzHoDwPniw5_BTT0bQ8m1wpV",
+      "name": "86f28e4b-9c28-4c13-9d9d-b189cae9f01d (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1sI0wqO3j9Ng9E80c7S7iW-2sF2zi80yr",
+      "name": "fb078d1f-1c3f-4828-bf5b-b0b3bea42f17 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1LWOI6qul4zXjCIKfUTIr5TcAiq65e2wp",
+      "name": "b2e277a9-fd7f-487d-bbe9-18c02a750313 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1W59i5BBIfkWh80NamTuYV5E0ZpkXKJAK",
+      "name": "3d40d598-7141-4f22-aa40-be6b9ab4d2fc (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1t3qgJWnKWhdBd2I52_locZpW9muLrdL0",
+      "name": "802be3f0-bfee-4dd7-8246-2a4a9cb70837 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1fUTnRaS3Z60aWfBDhyDqJzyf4Ukydc87",
+      "name": "Credit OnePager Template v1.xlsx (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1ioaYthV14IIUUDiCSHdsTsrd5rdsBm4H",
+      "name": "_WRD3966.jpg (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1meV4eeEv3YEyTSVJ1I3CEnuOxmoFgB3W",
+      "name": "942ea9fe-2cf7-4d4b-a1f1-8771f2ef1ff5 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1qAsXLakf3fxQeIEwWRFrBFXpuTCZ5kBe",
+      "name": "6ffd25a2-5f35-45ee-8588-d79b2f17b408 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "125X2SiSM9i7HrMo7kwLZUGqsIhpgfvIr",
+      "name": "4a1e6c34-b3e8-4fe5-90d0-d9a6092fba33 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1x89UyCBfw_FOWKHWJVpml2ZaKHJfDM-e",
+      "name": "7 West 18th LLC Apr 2026 Management Reports.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1l2CMPGjWP-G54riugBIvQI1MqRHdyoA5",
+      "name": "April 2026 Inc Stmt Excel.xlsx (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Dy-l-tpqFnCCEU-8J-3R2y8xFCoOaAL7",
+      "name": "d654a5aa-abf8-470a-986c-8aa7df15c7e2 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1X1WqI9UoZRbVj2hRr0A8MItO-M4xQ5wE",
+      "name": "16ecca3e-c6ac-4374-9884-5d3e86c8faf0 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1hPkLzHmHLfB8MuAu2t8DwZFVM_8pdemd",
+      "name": "2ce99ccc-5428-4f22-aeb6-a9304c4e1b46 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1rdBdnYJvqUcmwGklO2rlWvMtp5cj2FZ9",
+      "name": "74b4e99b-b80a-4d1c-b577-969efb9fe203 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Nx7VYwpobliwpUGggfTod_iKl1Amrb4l",
+      "name": "8b885253-317b-40aa-b120-c11233b466f9 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Q0on5nreTXWMfB8-pA6b5AL5r-OUMASo",
+      "name": "1527 York Equity Book.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1LjgwzR7jCBL1UyqMevks4Ux3oYOOJa3j",
+      "name": "image497938.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1sYTPjbBUOge7VfZsuH26tEmtjNTSh6rR",
+      "name": "image229773.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1g3xe1hZ_DQFkb5ku0iLidqfC4s8318Wm",
+      "name": "image779626.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1S1aJw_gFSxj0amfwaVC0YUEa3CljuEL0",
+      "name": "DBLNYC84_TO_combined.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1LdODcMhCUkxw42f_-AMwCsMVuePnTZph",
+      "name": "Outlook-lqwoghsd.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1zVvWJh_YnAYiCmG0P_W_lX1YVmfR_xdL",
+      "name": "Outlook-c3cmvvqq.gif (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1RqdwyNlGgPBD1zfgkHlhcvq_kVpFM37k",
+      "name": "7c87f895-2dea-4f4c-ae15-588e73f68eab (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1QrTHoTC5um75bEXt5mr_Gp6xQNIwSh19",
+      "name": "cda058f7-0686-4db1-9264-cec47c7b0b34 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1tov5u6bXnHonXkPci2734oGhl19ghkgK",
+      "name": "8f0d6057-c174-4d39-8f86-d465ff25f5ee (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Y5ZoOcaNkS90S1ikOZY1AXV2anVmumxX",
+      "name": "80b62fc9-f20e-4d18-9be3-05d8de25a650 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1FaZIi2URWcHlG1-UJt88IWkcGTv-xTgp",
+      "name": "17545fa2-3a0e-485f-b9e5-c675c889a8a0 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "177jzlw5NT90hGHqEQ8ry9OJmV8JBgcDL",
+      "name": "aba18bbe-f72d-415d-8736-f5b2a7aa81b7 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1QeDKE6Yr0dFJ1dG5HbWEpZNRde8BMAqe",
+      "name": "daa52d0d-18f3-4060-8762-315bc2683ff4 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "14RLzMDFA61Bzj7M6pGvEevZnoG1nnnnA",
+      "name": "c6b47844-88c1-4242-b2a4-262124573d79 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1FLN7uhWtrhihq53rwbSUea5B7ZVrbpyU",
+      "name": "a8ff18a9-f24b-430b-b94f-9b87ebc13a3d (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1RyvngBUqV4MACLoq8TD_eiwVLgdvxxXz",
+      "name": "NDF III Final Close Memo.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1laebWsXEEhXav-lerlIOgw-1RFEOvz4W",
+      "name": "b465b60b-c371-4fef-b3a0-eaf3e00a26ab (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1--D4-D9DeAzMSNa_uCTWJK7TYj3RPQAD",
+      "name": "ff6a3b45-0a5f-4792-a10c-0847b6710ffc (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1q3lNLc7LFT_gJ4u-eWoVwwfQMqvysHvg",
+      "name": "0036de74-fd5e-4b9d-b08f-c0c058f8ba11 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "13fSz5yMOYnrOnbcqLlCdV9U8UhvOklWx",
+      "name": "c7893b85-2560-41e6-9e51-d7799e2d4014 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "12Wjk7BVWD55oQwcV07eMAIc0nMIcV6mn",
+      "name": "13853d56-d5d9-4fb9-be22-3dc2564d2d1c (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1REDbSQeRM8ViWfNxBBicXrMxHU0EfTdU",
+      "name": "7b12ca6d-6059-43f3-ae0b-b2e235372ef1 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1J1wQI-6W-vT79ZQvUsaUiSZnqYgRxN9V",
+      "name": "03f6ebc7-831a-4bfe-acb7-6875cbb654e8 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1UxDi3DQihoxPTZlXhgwVl0SkDUOOgI34",
+      "name": "c1fa12dc-ab52-48d3-8a4d-4e6e89efbb18 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1a3hIWh9UhpvMMoMk7ziS5cbHjVYAQFoE",
+      "name": "5160acc3-74b5-447b-b955-272a5aaf0b1b (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1gsowUOBujOSXGBUm7fvQnVjCP3xwolzI",
+      "name": "93e7e4a4-bcac-4d99-85f3-aa585c79a81e (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1CYGQPzXB8duzTxuyS1T1WGDy2IYJc3pR",
+      "name": "6e14f216-33c7-4a9c-bf03-35e1f2e06758 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "16sKTjHersiJ1rAQpTw2kuw-l-KXm89vN",
+      "name": "f9fee255-bec9-47fe-9dc3-624f8c4bfe9b (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1zW1gYai42ypUL7QYfuVZas2CRIezexkt",
+      "name": "Outlook-au1efbts.gif (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1ugYFoF88Sw6_1xWVjNNnS8pvlYUjOteD",
+      "name": "image316887.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1licb4pU6UMTtbHH5RyN0fWuvklsBQgT_",
+      "name": "7 West 18th Street New York NY - DOV 2-26 DRAFT to Dundee BI.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1sYAF-5sF1i6ZPDX37HBxZJBjaaTOajLX",
+      "name": "Disability.TIF (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1VKqgs0fnCRK2WzDEtSuhveoODbHvhQOk",
+      "name": "Norstar OM 5.13.26.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "17N-_04GPBlYQw8gcZMti16GAhAt3mYYO",
+      "name": "image023.gif (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1Wy-Ofj7wZf34OTTTZdp33LTHXFnSC0yl",
+      "name": "wc 24.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1SBErR0Xk7rElejvI_TNX97Z9i8q4-TBt",
+      "name": "Operating Agreement Tarsat US LLC Signed.pdf (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1iFwxtA3Y-PwQSEvGlCPXJvojDgIymVLH",
+      "name": "dd552aec-77df-4134-a4b3-5fd5cb0be4e7 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1ec2pGgfPw_EcRlgw6vMpu5_VHmQBL0zy",
+      "name": "41e0e228-ad2e-410b-8685-b4b3fd7d3acd (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1r2DJ9xF4KGi5MX7wFMHTc5Ynw8LAZK5V",
+      "name": "fcd08a20-c2aa-4ca8-888f-7cece4914c67 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1DzldWKowyt6rDHsFv4ODWXxIygyO7CKT",
+      "name": "c7cb6566-15ae-471e-a9db-8a8843d7626c (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1-JJc0D9qbjzIxUQ2ScBbu0TjHyaMaJMC",
+      "name": "31a1e134-eff1-463f-a65f-aa58009e8ef8 (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1F6Z_f-g5Ikte5sX4NuU1GqiXLa7HFP_3",
+      "name": "image076913.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1rNmph-yHEzpT_2CJGP6WHC9ngNk-zQzm",
+      "name": "image754906.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1_1jHMreWCyXZz4bvIorKeq9kYg7T4mlQ",
+      "name": "image202935.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1XJTeo0PLDnXrpCijOxQt6-tyhx7G1zYS",
+      "name": "image055059.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1F9D7SlkExJRt3wmkuwCkG6gdUypnB3Yh",
+      "name": "image438754.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1b48w7Leq4Iu_Suyw48hm9dxAse8mRrPh",
+      "name": "image901112.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1SfPB5StVd_Jm_KZJixCPuJ8H7P643T0P",
+      "name": "image073953.png (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "19JFae496k6QqmOkd-4_byNHdiVmNlGxf",
+      "name": "Outlook-itsm1k0m.gif (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1N2j-8aDQ5Q-GKrci13fF44vEVB-ReTfC",
+      "name": "7W18_ENTRY-SIGNAGE_PAUL-SIGNS_QUOTE.eml (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1WezUdmvg0aeY2uXC3XiCPoj_ELBw3Dj2",
+      "name": "Outlook-qpgixbqo.gif (4-byte stub)",
+      "reason": "4-byte sync stub in stub folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ (failed Outlook/OneDrive sync)"
+    },
+    {
+      "id": "1tq0IxAMro_v-C7zTa8O-DIhbjdtF0Gmb",
+      "name": "~$mily_Office_Governance_Framework.docx",
+      "reason": "Office lock file (~$ prefix)"
+    },
+    {
+      "id": "1j-JL7KRp2vg3ohgadq5C0Q1hNgYd7MRP",
+      "name": "~$54_W_39_BOE.xlsx",
+      "reason": "Office lock file (~$ prefix)"
+    }
   ],
   "_review_required": {
     "_note": "These groups need human judgment. Edit them into 'items' above only after you've decided which to keep.",
