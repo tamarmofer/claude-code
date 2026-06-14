@@ -1,0 +1,39 @@
+{
+  "_comment": "High-confidence duplicates identified by scanning tamarmofer@gmail.com Drive. Run delete_dupes.py with --commit to trash these (recoverable for ~30 days). The 'review' section below requires human judgment before deletion and is NOT processed by the script.",
+  "items": [
+    {"id": "15l2kDpJk11jL4OGJQpG2j5rSLCVcwuXU", "name": "~$420_E_80th_Rent_Comps_v4_redline.xlsx", "reason": "Office lock file (~$ prefix)"},
+    {"id": "1IVokSR77FMkZb6_dcsTMGAaj7gqWSS_P", "name": "~$scussion_with_nadav_1.docx", "reason": "Office lock file (~$ prefix)"},
+
+    {"id": "1A_tAtd4WbTScPUmkD4xiNcYBGZjlxjCf", "name": "SUMMARY.md (older copy)", "reason": "Duplicate of 1IHaaZVM85xRDIzJtX1nBUTelmCy6Xnkn (same name+size 6342B, older folder)"},
+    {"id": "1YqRthOoQLulK-yL5jyj3kCT9s2pRBSDs", "name": "dob_ecb_violations_BBL_1019400056.json (older copy)", "reason": "Duplicate of 1anYiozLlhd5eouEg7TMutijswYmbnuHb (same name+size 3B)"},
+    {"id": "1j1Zvk08GUloRJmLGh4ihgLUQ0BAz1yq8", "name": "dob_now_boiler_reports_BIN_1058855.json (older copy)", "reason": "Duplicate of 18__FDW9GW5WP7udWqQT-hC_ESBLC-ElT (same name+size 4501B)"},
+    {"id": "19rF2tSc7N_nCXt6fCczOgraTw4nuute5", "name": "dob_violations_BBL_1019400056.json (older copy)", "reason": "Duplicate of 1MA8msXVmo7JxsqBVM-im32yKlXBce2GD (same name+size 1375B)"},
+    {"id": "1eJVuY9cG_oVvpZKUGiMU1Be16Z-xb7KR", "name": "dob_safety_violations_BIN_1058854_1058855.json (older copy)", "reason": "Duplicate of 1sSnOWiVa5H9jNH-Skn0MbcJ5kHn5pfW6 (same name+size 9235B)"},
+
+    {"id": "1DeMvGbe4nSN-LxSeL7ox5VnuWw7uqk9G", "name": "housing-comparison_1.html", "reason": "Duplicate of housing-comparison.html (same size 7613B, same folder)"},
+    {"id": "1FLYyJSwvd1Wo-4iKuyV0yYs6V_-oU2ek", "name": "direct_member_reimbursement (1).pdf", "reason": "Duplicate of direct_member_reimbursement.pdf (same size 80092B)"},
+    {"id": "1E6tWk8WU46NrOvGPow8LNrPj02trsGlf", "name": "2026_LOI_548_W_28th_St_v2_1.docx", "reason": "Duplicate of 2026_LOI_548_W_28th_St_v2.docx (same size 33221B)"},
+
+    {"id": "12buZ8uz_w5r5KHOMLQXoqnAif0ym_XnG", "name": "InvoiceReport.pdf (4-byte stub)", "reason": "4-byte sync stub; full file exists at 1Z6QjKBAu7UQoEfp2sZwrsBIBIm_0TvbR (660608B)"},
+    {"id": "1C1QBHN_MGeOhoLc6H66nB_5pUETKYcaM", "name": "WWW.pdf (4-byte stub)", "reason": "4-byte sync stub; full file exists at 1RQq4cZf534DVeKwLer6isftBF6kkVM7I (104167B)"},
+    {"id": "1In-zcdkZlUZxawhQAHdQnHEyiTEsoW_l", "name": "may2026_LOCs.xlsx (4-byte stub)", "reason": "4-byte sync stub; full file exists at 1oSHxhzivLL4Zmr2lj43dif49nqtR2JPF (19483B)"},
+    {"id": "1wA7RakXdq9GHzuN-kJ0uIVuzotdSF1Uz", "name": "roro_nexus.xlsx (4-byte stub)", "reason": "4-byte sync stub; full file exists at 1hKTCTtgPL1ofNAnfUVPso2kONa5wdnb1 (10999B)"},
+    {"id": "1UqBuXjfuJ0tyELynDeuSumgLqqA6nRih", "name": "The Ashford_UW Model 5.2026 OB.8_ext.xlsx (4-byte stub)", "reason": "4-byte sync stub; full file exists at 1s0JXOXNg0xb_jiAC-tpCpdmBSuIi4fn_ (1754439B)"},
+    {"id": "1Ag0thiJJwQ1jzX7Aaggv0mpi06QgrH8M", "name": "F1_2025_IE_w_Variance_Notes.pdf (4-byte stub)", "reason": "4-byte sync stub; full file exists at 18y6Mn906l2aCzGS7Ut737BmiOWZXQaDM (865197B)"}
+  ],
+  "_review_required": {
+    "_note": "These groups need human judgment. Edit them into 'items' above only after you've decided which to keep.",
+    "office_lock_files_pending_full_scan": "After delete_dupes.py runs, run again on the full duplicates manifest produced from /tmp/gdrive-scan/dupe_report.json to catch additional ~$ files and stubs in the second half of the Drive.",
+    "four_byte_stub_cluster": "Folder 1l9JjEXwpkzSl3SXLW1lFsViMaq9CnDMJ contains ~170+ 4-byte sync-stub files (image*.png/.gif, UUID-named octet-streams, _WRD*.jpg). All are almost certainly safe to trash, but listing each here would be huge - generate the full ID list from dupe_report.json once the scan finishes.",
+    "uhc_superbills": "10 PDFs in folder 14wn4DmMp5uBt0q9zY7iQVfWUY3nDFXYM all exactly 147253B with different DOS dates in filenames. May all be identical blank forms or genuinely distinct claims - download one to verify before deciding.",
+    "version_series": [
+      "420_E_80th_Rent_Comps_v2/v3/v4_redline.xlsx",
+      "household-budget.html / _1.html / _2.html",
+      "discussion_with_nadav.docx / _1.docx",
+      "7W18 Open Items Tracker v5/v6/v7/unversioned",
+      "7W18_PM_Leveling_v3.xlsx / _v4.xlsx",
+      "matleave contacts.xlsx / -1.xlsx",
+      "Nanny Hiring Workbook.xlsx / -1.xlsx"
+    ]
+  }
+}
