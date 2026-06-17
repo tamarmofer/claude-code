@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Newborn Timeline · What to Expect & How to Cope</title>
+<style>
+  :root {
+    --bg: #0f1226;
+    --bg-soft: #181c3a;
+    --card: #1d2247;
+    --card-hi: #262c5c;
+    --ink: #eef0ff;
+    --ink-dim: #a6abd6;
+    --accent: #ffb4a2;
+    --accent-2: #8ad8c8;
+    --accent-3: #b8a4ff;
+    --line: #3a4080;
+    --good: #8ad8c8;
+    --warn: #ffd27d;
+    --alert: #ff8a8a;
+    --shadow: 0 10px 40px rgba(0,0,0,.35);
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 600px at 20% -10%, #232a5e 0%, transparent 55%),
+                radial-gradient(1000px 500px at 90% 0%, #3a2a52 0%, transparent 50%),
+                var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  header.hero { text-align: center; margin-bottom: 8px; }
+  .hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin: 0 0 6px;
+    letter-spacing: -.5px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-3) 60%, var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p { color: var(--ink-dim); margin: 0 auto; max-width: 640px; }
+  .age-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 14px; padding: 8px 16px; border-radius: 999px;
+    background: rgba(255,180,162,.12); border: 1px solid rgba(255,180,162,.4);
+    color: var(--accent); font-weight: 600; font-size: .95rem;
+  }
+  .age-badge .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(255,180,162,.6); animation: pulse 2s infinite; }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,180,162,.55); }
+    70% { box-shadow: 0 0 0 12px rgba(255,180,162,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,180,162,0); }
+  }
+
+  /* Timeline rail */
+  .timeline {
+    position: relative;
+    margin: 38px 0 8px;
+    padding: 6px 4px 18px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .rail {
+    position: relative;
+    display: flex;
+    gap: 0;
+    min-width: 760px;
+    padding: 28px 10px 8px;
+  }
+  .rail::before {
+    content: "";
+    position: absolute;
+    left: 18px; right: 18px; top: 40px;
+    height: 4px; border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-3), var(--accent-2));
+    opacity: .5;
+  }
+  .node { position: relative; flex: 1; text-align: center; cursor: pointer; user-select: none; }
+  .node .week { font-size: .72rem; color: var(--ink-dim); margin-bottom: 8px; font-weight: 600;
+    letter-spacing: .3px; text-transform: uppercase; }
+  .node .bead {
+    width: 22px; height: 22px; border-radius: 50%;
+    margin: 0 auto; background: var(--bg-soft);
+    border: 3px solid var(--line); position: relative; z-index: 2;
+    transition: transform .18s ease, border-color .18s ease, background .18s ease;
+  }
+  .node .label { font-size: .78rem; margin-top: 8px; color: var(--ink-dim); transition: color .18s; }
+  .node:hover .bead { transform: scale(1.18); border-color: var(--accent-3); }
+  .node:hover .label { color: var(--ink); }
+  .node.active .bead { background: var(--accent-3); border-color: var(--ink); transform: scale(1.25); }
+  .node.active .label { color: var(--ink); font-weight: 700; }
+  .node.here .bead { background: var(--accent); border-color: #fff; }
+  .node.here::after {
+    content: "you are here";
+    position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
+    font-size: .6rem; letter-spacing: .5px; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; white-space: nowrap;
+  }
+
+  /* Detail card */
+  .panel {
+    background: linear-gradient(180deg, var(--card-hi), var(--card));
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 26px 26px 30px;
+    margin-top: 22px;
+    animation: rise .35s ease;
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .panel-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 14px; margin-bottom: 6px; }
+  .panel-head h2 { margin: 0; font-size: 1.5rem; }
+  .panel-head .range { color: var(--ink-dim); font-size: .9rem; font-weight: 600; }
+  .panel .tagline { color: var(--accent-2); margin: 2px 0 20px; font-style: italic; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
+
+  .col h3 { display: flex; align-items: center; gap: 8px; font-size: 1.02rem; margin: 0 0 12px;
+    padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .col h3 .ic { font-size: 1.2rem; }
+  .col.expect h3 { color: var(--accent-2); }
+  .col.cope h3 { color: var(--accent); }
+  ul.items { list-style: none; margin: 0; padding: 0; }
+  ul.items li { position: relative; padding: 7px 0 7px 26px; color: var(--ink); font-size: .95rem; }
+  ul.items li::before {
+    content: ""; position: absolute; left: 4px; top: 14px;
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .col.expect li::before { background: var(--accent-2); }
+  .col.cope li::before { background: var(--accent); }
+
+  .redflags {
+    margin-top: 22px; padding: 16px 18px; border-radius: 14px;
+    background: rgba(255,138,138,.09); border: 1px solid rgba(255,138,138,.35);
+  }
+  .redflags h4 { margin: 0 0 8px; color: var(--alert); font-size: .98rem; display: flex; gap: 8px; align-items: center; }
+  .redflags ul { margin: 0; padding-left: 18px; color: #ffd9d9; font-size: .9rem; }
+  .redflags li { padding: 3px 0; }
+
+  .footer-note {
+    margin-top: 30px; padding: 18px; border-radius: 14px;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
+    color: var(--ink-dim); font-size: .85rem; text-align: center;
+  }
+  .footer-note strong { color: var(--ink); }
+  .nav-hint { text-align: center; color: var(--ink-dim); font-size: .82rem; margin-top: 4px; }
+  kbd { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 6px;
+    padding: 1px 7px; font-size: .8rem; color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1>Your Newborn, Week by Week</h1>
+    <p>An interactive guide to the first three months — what to expect at each stage, and gentle, practical ways to handle it. Tap any point on the timeline.</p>
+    <div class="age-badge"><span class="dot"></span> Baby is 11 days old today</div>
+  </header>
+
+  <div class="timeline">
+    <div class="rail" id="rail"></div>
+  </div>
+  <div class="nav-hint">Use <kbd>←</kbd> <kbd>→</kbd> arrow keys or tap a dot to move through time</div>
+
+  <div class="panel" id="panel"></div>
+
+  <div class="footer-note">
+    <strong>A note of reassurance:</strong> every baby moves through these stages on their own schedule —
+    ranges below are typical, not deadlines. This guide is general information for tired parents, not medical advice.
+    For anything that worries you, trust your gut and call your pediatrician or midwife. You're doing great. 💛
+  </div>
+</div>
+
+<script>
+const stages = [
+  {
+    week: "Days 0–7", label: "1st week", range: "Birth – 7 days",
+    title: "The Fourth Trimester Begins",
+    tagline: "Tiny, sleepy, and recalibrating to life outside.",
+    expect: [
+      "Sleeps 16–18 hrs a day in short, unpredictable bursts.",
+      "Feeds every 1.5–3 hrs (8–12+ times in 24 hrs).",
+      "Weight dips 5–10% then starts climbing back — normal.",
+      "Meconium (black, tarry poop) shifts to yellow, seedy stools.",
+      "Startle (Moro) reflex, hiccups, sneezes, and grunty 'noisy' sleep.",
+      "Umbilical cord stump drying and darkening."
+    ],
+    cope: [
+      "Feed on demand — watch for early cues (rooting, hands to mouth), not just crying.",
+      "Skin-to-skin contact regulates baby's temp, heart rate, and your milk.",
+      "Keep the cord stump clean and dry; fold the diaper below it.",
+      "Sleep when baby sleeps — dishes can wait, recovery can't.",
+      "Track wet (6+/day) and dirty diapers so you know feeding is working."
+    ],
+    red: [
+      "Fewer than 6 wet diapers a day after day 5, or no wet diaper in 8+ hrs.",
+      "Rectal temperature ≥ 100.4°F / 38°C — call immediately for a baby this young.",
+      "Yellowing of the skin/eyes that is spreading or worsening.",
+      "Limp, very hard to wake, or refusing to feed."
+    ]
+  },
+  {
+    week: "Days 8–14", label: "2nd week", range: "8 – 14 days", here: true,
+    title: "Finding a Rhythm (You're Here)",
+    tagline: "Back to birth weight, and getting to know each other.",
+    expect: [
+      "Most babies regain their birth weight by ~10–14 days.",
+      "Cord stump often falls off around now (a little spotting is fine).",
+      "More alert windows — brief, intense eye contact.",
+      "Cluster feeding, especially in the evenings.",
+      "Baby acne, milk spots, peeling skin, and 'witching hour' fussiness may appear.",
+      "Day/night confusion: wide awake at 3am is classic right now."
+    ],
+    cope: [
+      "Lean into cluster feeds — it's how baby boosts your supply, not a sign of starving.",
+      "Differentiate day & night: bright + chatty by day, dim + quiet by night.",
+      "Once the stump is off, you can move to gentle tub baths.",
+      "Accept every offer of help; protect your own sleep in shifts if you can.",
+      "Swaddle, sway, shush — recreate the womb for the evening fussies."
+    ],
+    red: [
+      "Still below birth weight at 2 weeks (flag it at the checkup).",
+      "Red streaks, pus, or foul smell around the cord — possible infection.",
+      "Fever ≥ 100.4°F / 38°C, or unusual floppiness/lethargy.",
+      "Persistent or worsening jaundice."
+    ]
+  },
+  {
+    week: "Weeks 3–4", label: "Weeks 3–4", range: "15 – 28 days",
+    title: "The Growth Spurt & Peak Fussiness",
+    tagline: "It often feels harder before it gets easier — that's normal.",
+    expect: [
+      "A growth spurt around 3 weeks: more feeding, more waking.",
+      "Crying tends to peak around 4–6 weeks (the 'period of PURPLE crying').",
+      "Longer, more focused alert periods; tracking faces.",
+      "Gassy, grunting, and 'evening colic' for some babies.",
+      "First social-ish smiles may sneak in near the end of the month."
+    ],
+    cope: [
+      "For the witching hour: white noise, motion, a walk outside, or a warm bath.",
+      "Bicycle legs and tummy massage for trapped gas.",
+      "It's OK to put a crying baby down safely and step away for 5 min to breathe.",
+      "Tag-team with a partner or helper so no one hits empty.",
+      "Remember PURPLE crying peaks then fades — you are not doing it wrong."
+    ],
+    red: [
+      "Inconsolable crying with fever, vomiting, or refusal to feed.",
+      "Crying that sounds different — high-pitched, weak, or moaning.",
+      "Never shake a baby — if you feel overwhelmed, put baby down safely and call someone."
+    ]
+  },
+  {
+    week: "Weeks 5–6", label: "Weeks 5–6", range: "29 – 42 days",
+    title: "The First Real Smiles",
+    tagline: "The reward stage — connection starts paying you back.",
+    expect: [
+      "Genuine social smiles in response to your face and voice.",
+      "Cooing and early vowel sounds ('aah', 'ooh').",
+      "Steadier head control during tummy time.",
+      "6-week growth spurt and the 6-week vaccinations.",
+      "Possibly one slightly longer stretch of night sleep emerging."
+    ],
+    cope: [
+      "Talk, sing, and narrate your day — you're building language and bonding.",
+      "Short, frequent tummy-time sessions while baby is awake and content.",
+      "For post-vaccine fussiness/fever: extra cuddles; ask your doctor about dosing.",
+      "Start a loose, predictable bedtime wind-down (it pays off later).",
+      "Take the photos — this stage is fleeting and magical."
+    ],
+    red: [
+      "No reaction to loud sounds, or no eye contact at all.",
+      "High fever or persistent inconsolable crying after vaccines.",
+      "Marked drop in feeding or wet diapers."
+    ]
+  },
+  {
+    week: "Weeks 7–9", label: "Weeks 7–9", range: "43 – 63 days",
+    title: "Waking Up to the World",
+    tagline: "More awake, more interactive, more you.",
+    expect: [
+      "Longer awake windows (up to ~60–90 min) and more play.",
+      "Hands discovered — batting at toys, bringing hands to mouth.",
+      "Louder, chattier cooing 'conversations' with turn-taking.",
+      "Smoother head control; pushing up on forearms.",
+      "Naps may start to organize, though still variable."
+    ],
+    cope: [
+      "Offer high-contrast toys and a baby-safe mirror.",
+      "Respond to coos as if chatting — pause, then 'reply'.",
+      "Watch awake-window length to catch the sleepy-window and ease fussiness.",
+      "Build a simple, repeatable nap and bedtime routine.",
+      "Get out of the house — a walk resets both of you."
+    ],
+    red: [
+      "Loss of skills baby previously had.",
+      "Persistent floppiness or stiffness.",
+      "Not feeding well or far fewer wet diapers."
+    ]
+  },
+  {
+    week: "Weeks 10–12", label: "Weeks 10–12", range: "64 – 90 days",
+    title: "Closing the Fourth Trimester",
+    tagline: "The newborn fog lifts — hello, little person.",
+    expect: [
+      "Belly laughs and squeals may begin.",
+      "Reaching for and grasping objects on purpose.",
+      "Good head control; loves being upright to 'see the world'.",
+      "Often a more predictable feed–play–sleep rhythm.",
+      "Some babies sleep one longer night stretch (no guarantees!)."
+    ],
+    cope: [
+      "Play interactively: peekaboo, soft toys to grab, varied textures.",
+      "Keep tummy time daily to build core and neck strength.",
+      "Protect the routine you've built — consistency is your friend now.",
+      "Check in on your own recovery and mood; ask for support if you need it.",
+      "Celebrate how far you've both come in three short months."
+    ],
+    red: [
+      "Not holding head up at all, or no social smiling by ~10–12 weeks.",
+      "No tracking of objects with eyes; no response to sounds.",
+      "Any concern about feeding, weight gain, or your own mental health — speak up."
+    ]
+  }
+];
+
+const rail = document.getElementById('rail');
+const panel = document.getElementById('panel');
+let current = 1; // start on "you are here"
+
+stages.forEach((s, i) => {
+  const node = document.createElement('div');
+  node.className = 'node' + (s.here ? ' here' : '');
+  node.dataset.i = i;
+  node.innerHTML =
+    `<div class="week">${s.week}</div><div class="bead"></div><div class="label">${s.label}</div>`;
+  node.addEventListener('click', () => select(i));
+  rail.appendChild(node);
+});
+
+function render(s) {
+  const li = (arr) => arr.map(x => `<li>${x}</li>`).join('');
+  panel.innerHTML = `
+    <div class="panel-head">
+      <h2>${s.title}</h2>
+      <span class="range">${s.range}</span>
+    </div>
+    <div class="tagline">${s.tagline}</div>
+    <div class="cols">
+      <div class="col expect">
+        <h3><span class="ic">🌱</span> What to expect</h3>
+        <ul class="items">${li(s.expect)}</ul>
+      </div>
+      <div class="col cope">
+        <h3><span class="ic">🤍</span> How to deal with it</h3>
+        <ul class="items">${li(s.cope)}</ul>
+      </div>
+    </div>
+    <div class="redflags">
+      <h4><span>⚠️</span> When to call your pediatrician</h4>
+      <ul>${li(s.red)}</ul>
+    </div>`;
+}
+
+function select(i) {
+  current = i;
+  document.querySelectorAll('.node').forEach(n =>
+    n.classList.toggle('active', Number(n.dataset.i) === i));
+  render(stages[i]);
+  const active = document.querySelector('.node.active');
+  if (active) active.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight') select(Math.min(current + 1, stages.length - 1));
+  if (e.key === 'ArrowLeft') select(Math.max(current - 1, 0));
+});
+
+select(current);
+</script>
+</body>
+</html>
