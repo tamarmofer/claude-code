@@ -1,0 +1,5 @@
+{
+  "name": "claude-api",
+  "version": "0.1.0",
+  "description": "Build, debug, and optimize applications using the Claude API and Anthropic SDK."
+}
