@@ -1,0 +1,3 @@
+deal,reason_died,date_died,ask,bid,noi,rentable_sf,market_rent_psf,prior_rent_psf,vacancy,opex_psf,prior_rate,current_rate,ltv,amort_years,prior_cap,current_cap
+Example Logistics,Negative leverage; we were under ask,2024-10-01,42000000,38500000,2730000,,,,,,0.0675,0.0585,0.65,30,0.058,0.065
+Example Retail,Seller held firm on price,2025-01-15,18500000,16000000,,95000,16.50,15.00,0.06,3.50,0.0700,0.0620,0.60,30,0.065,0.070

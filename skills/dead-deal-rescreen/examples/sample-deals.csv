@@ -1,0 +1,5 @@
+deal,reason_died,date_died,ask,bid,noi,prior_rate,current_rate,ltv,amort_years,prior_cap,current_cap,market_rent_psf,prior_rent_psf
+Maple Logistics,Negative leverage at 6.75% debt; we were 8% under ask,2024-10-01,42000000,38500000,2730000,0.0675,0.0585,0.65,30,0.058,0.065,11.50,10.25
+Riverside Retail,Seller held firm; anchor lease rolled,2025-01-15,18500000,16000000,1295000,0.0700,0.0620,0.60,30,0.065,0.070,,
+Oakhill Office,Functional obsolescence; structural facade issues,2024-08-20,22000000,15000000,1400000,0.0700,0.0610,0.55,25,0.075,0.085,,
+Cedar Flats,Rents didn't support basis; rate spike,2024-12-05,31000000,27500000,1860000,0.0660,0.0560,0.65,30,0.052,0.055,28.00,24.50
