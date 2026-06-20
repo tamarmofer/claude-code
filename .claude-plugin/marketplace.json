@@ -15,14 +15,14 @@
       "category": "development"
     },
     {
-      "name": "claude-opus-4-5-migration",
-      "description": "Migrate your code and prompts from Sonnet 4.x and Opus 4.1 to Opus 4.5.",
-      "version": "1.0.0",
+      "name": "claude-model-migration",
+      "description": "Migrate your code and prompts to the current Claude generation (Claude Opus 4.8).",
+      "version": "2.0.0",
       "author": {
         "name": "William Hu",
         "email": "whu@anthropic.com"
       },
-      "source": "./plugins/claude-opus-4-5-migration",
+      "source": "./plugins/claude-model-migration",
       "category": "development"
     },
     {

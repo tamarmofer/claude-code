@@ -178,7 +178,7 @@ Which approach would you like to use?
 **Goal**: Ensure code is simple, DRY, elegant, and functionally correct
 
 **What happens:**
-- Launches 3 `code-reviewer` agents in parallel with different focuses:
+- Launches 3 `feature-code-reviewer` agents in parallel with different focuses:
   - **Simplicity/DRY/Elegance**: Code quality and maintainability
   - **Bugs/Correctness**: Functional correctness and logic errors
   - **Conventions/Abstractions**: Project standards and patterns
@@ -292,7 +292,7 @@ Suggested next steps:
 - Implementation map with specific files
 - Build sequence with phases
 
-### `code-reviewer`
+### `feature-code-reviewer`
 
 **Purpose**: Reviews code for bugs, quality issues, and project conventions
 
@@ -335,7 +335,7 @@ Let the workflow guide you through all 7 phases.
 
 **Review code:**
 ```
-"Launch code-reviewer to check my recent changes"
+"Launch feature-code-reviewer to check my recent changes"
 ```
 
 ## Best Practices

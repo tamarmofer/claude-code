@@ -1,14 +1,12 @@
-# Prompt Snippets for Opus 4.5
+# Prompt Snippets for Opus 4.8
 
-Only apply these snippets if the user explicitly requests them or reports a specific issue. By default, the migration should only update model strings.
+Only apply these snippets if the user explicitly requests them or reports a specific issue. By default, the migration should only update model strings and apply the breaking-change items in `SKILL.md`.
 
-## 1. Tool Overtriggering
+## 1. Tool Triggering
 
-**Problem**: Prompts designed to reduce undertriggering on previous models may cause Opus 4.5 to overtrigger.
+Opus 4.8's tool triggering is **surface-dependent**, so the fix depends on the symptom:
 
-**When to add**: User reports tools being called too frequently or unnecessarily.
-
-**Solution**: Replace aggressive language with normal phrasing.
+**Overtriggering** (a tool fires too often) — prompts written to *overcome* older models' reluctance are now too aggressive. Soften the language:
 
 | Before | After |
 |--------|-------|
@@ -17,9 +15,15 @@ Only apply these snippets if the user explicitly requests them or reports a spec
 | `You are REQUIRED to...` | `You should...` |
 | `NEVER skip this step` | `Don't skip this step` |
 
+**Undertriggering** (4.8 under-reaches for web search, subagents, file-based memory, or custom tools) — state *when* to use the capability, and put the trigger condition in the tool's own `description`, not just the system prompt:
+
+```
+When the answer depends on current information not present in the conversation (recent events, current prices, version-specific behavior), call the search tool before answering rather than answering from memory. For work that fans out across independent items, delegate to subagents instead of iterating serially.
+```
+
 ## 2. Over-Engineering Prevention
 
-**Problem**: Opus 4.5 may create extra files, add unnecessary abstractions, or build unrequested flexibility.
+**Problem**: Opus 4.8 may create extra files, add unnecessary abstractions, or build unrequested flexibility — more so at higher effort.
 
 **When to add**: User reports unwanted files, excessive abstraction, or unrequested features.
 
@@ -34,7 +38,7 @@ Only apply these snippets if the user explicitly requests them or reports a spec
 
 ## 3. Code Exploration
 
-**Problem**: Opus 4.5 may propose solutions without reading code or make assumptions about unread files.
+**Problem**: The model may propose solutions without reading code or make assumptions about unread files.
 
 **When to add**: User reports the model proposing fixes without inspecting relevant code.
 
@@ -44,7 +48,27 @@ Only apply these snippets if the user explicitly requests them or reports a spec
 ALWAYS read and understand relevant files before proposing code edits. Do not speculate about code you have not inspected. If the user references a specific file/path, you MUST open and inspect it before explaining or proposing fixes. Be rigorous and persistent in searching code for key facts. Thoroughly review the style, conventions, and abstractions of the codebase before implementing new features or abstractions.
 ```
 
-## 4. Frontend Design Quality
+## 4. Narration & Autonomy
+
+**Problem**: Opus 4.8 narrates more than 4.7 (more text between tool calls, longer end-of-task wrap-ups) and is more deliberate — it tends to pause and ask on minor decisions, or close a finished task with "Want me to also…?".
+
+**When to add**: User reports the agent is too chatty, or asks permission too often on small choices.
+
+**Silence-default snippet** (for coding agents that are too chatty):
+
+```
+Default to silence between tool calls. Only write text when you find something, change direction, or hit a blocker — one sentence each. Do not narrate routine actions ("Now I'll...", "Let me check..."). When done: one or two sentences on the outcome. Do not recap every file or test — the user has been following along.
+```
+
+**Autonomy snippet** (to cut ask-rate on minor decisions):
+
+```
+For minor choices (naming, formatting, default values, which approach among equivalents), pick a reasonable option and note it rather than asking. For scope changes or destructive actions, still ask first.
+```
+
+Remove any forced-progress scaffolding (e.g. "after every 3 tool calls, summarize progress") — 4.8 does this on its own.
+
+## 5. Frontend Design Quality
 
 **Problem**: Default frontend outputs may look generic ("AI slop" aesthetic).
 
@@ -71,30 +95,6 @@ Avoid generic AI-generated aesthetics:
 Interpret creatively and make unexpected choices that feel genuinely designed for the context. Vary between light and dark themes, different fonts, different aesthetics. You still tend to converge on common choices (Space Grotesk, for example) across generations. Avoid this: it is critical that you think outside the box!
 </frontend_aesthetics>
 ```
-
-## 5. Thinking Sensitivity
-
-**Problem**: When extended thinking is not enabled (the default), Opus 4.5 is particularly sensitive to the word "think" and its variants.
-
-Extended thinking is not enabled by default. It is only enabled if the API request contains a `thinking` parameter:
-```json
-"thinking": {
-    "type": "enabled",
-    "budget_tokens": 10000
-}
-```
-
-**When to apply**: User reports issues related to "thinking" while extended thinking is not enabled (no `thinking` parameter in their request).
-
-**Solution**: Replace "think" with alternative words.
-
-| Before | After |
-|--------|-------|
-| `think about` | `consider` |
-| `think through` | `evaluate` |
-| `I think` | `I believe` |
-| `think carefully` | `consider carefully` |
-| `thinking` | `reasoning` / `considering` |
 
 ## Usage Guidelines
 

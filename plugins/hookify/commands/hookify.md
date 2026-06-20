@@ -1,5 +1,5 @@
 ---
-description: Create hooks to prevent unwanted behaviors from conversation analysis or explicit instructions
+description: Interactively create hookify rules to prevent unwanted behaviors — analyzes the conversation (or your explicit instructions) to decide which rules to write. For rule-file syntax reference only, see the hookify:writing-rules skill.
 argument-hint: Optional specific behavior to address
 allowed-tools: ["Read", "Write", "AskUserQuestion", "Task", "Grep", "TodoWrite", "Skill"]
 ---

@@ -1,6 +1,6 @@
 ---
 allowed-tools: Bash(gh issue view:*), Bash(gh search:*), Bash(gh issue list:*), Bash(gh pr comment:*), Bash(gh pr diff:*), Bash(gh pr view:*), Bash(gh pr list:*), mcp__github_inline_comment__create_inline_comment
-description: Code review a pull request
+description: Quick single-pass code review of a pull request (one reviewer over the PR diff). For a deep multi-agent review, use /review-pr from the pr-review-toolkit plugin instead.
 ---
 
 Provide a code review for the given pull request.

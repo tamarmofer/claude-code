@@ -1,5 +1,5 @@
 ---
-description: "Comprehensive PR review using specialized agents"
+description: "Deep, comprehensive PR review using multiple specialized analyzer agents (silent-failure, type-design, comments, tests, simplifier, code-reviewer). For a quick single-pass review, use /code-review instead."
 argument-hint: "[review-aspects]"
 allowed-tools: ["Bash", "Glob", "Grep", "Read", "Task"]
 ---

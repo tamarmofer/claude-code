@@ -1,6 +1,6 @@
 ---
 name: Writing Hookify Rules
-description: This skill should be used when the user asks to "create a hookify rule", "write a hook rule", "configure hookify", "add a hookify rule", or needs guidance on hookify rule syntax and patterns.
+description: Syntax reference for authoring hookify rule files (rule file format, fields, matchers, and patterns). Use this skill when you need to know HOW a hookify rule is written — e.g. the user asks about hookify rule syntax, rule-file structure, or valid matchers. For the interactive workflow that decides WHICH rules to create from a conversation, use the /hookify command instead (it loads this skill for reference).
 version: 0.1.0
 ---
 

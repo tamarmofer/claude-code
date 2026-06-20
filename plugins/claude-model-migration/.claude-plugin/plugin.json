@@ -1,0 +1,9 @@
+{
+  "name": "claude-model-migration",
+  "version": "2.0.0",
+  "description": "Migrate your code and prompts to the current Claude generation (Claude Opus 4.8).",
+  "author": {
+    "name": "William Hu",
+    "email": "whu@anthropic.com"
+  }
+}
