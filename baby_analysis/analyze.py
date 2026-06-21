@@ -271,3 +271,182 @@ fig.suptitle(
 out = "/home/user/claude-code/baby_analysis/dashboard.png"
 fig.savefig(out, bbox_inches="tight", facecolor="white")
 print(f"\nSaved -> {out}")
+
+# ===================================================================
+#  EXTRA FIGURE: day vs night split + 3-day rolling trends
+# ===================================================================
+# Night defined as 19:00–07:00 (12h). Tag every feed session.
+NIGHT_START, NIGHT_END = 19, 7
+def is_night(h):
+    return (h >= NIGHT_START) or (h < NIGHT_END)
+ff = ff.copy()
+ff["night"] = ff["hour"].apply(is_night)
+
+# per-day day/night minutes and counts
+dn_min = ff.pivot_table(index="date", columns="night", values="dur_min",
+                        aggfunc="sum").reindex(full_dates).fillna(0)
+dn_cnt = ff.pivot_table(index="date", columns="night", values="dur_min",
+                        aggfunc="count").reindex(full_dates).fillna(0)
+night_min = dn_min.get(True, pd.Series(0, index=full_dates))
+day_min   = dn_min.get(False, pd.Series(0, index=full_dates))
+night_cnt = dn_cnt.get(True, pd.Series(0, index=full_dates))
+day_cnt   = dn_cnt.get(False, pd.Series(0, index=full_dates))
+
+tot_night = ff[ff["night"]]["dur_min"].sum()
+tot_day   = ff[~ff["night"]]["dur_min"].sum()
+pct_night = tot_night / (tot_night + tot_day) * 100
+print("\n" + "=" * 70)
+print(f"DAY vs NIGHT (night = {NIGHT_START}:00–0{NIGHT_END}:00, 12h window)")
+print(f"  Feed minutes:  day {tot_day:.0f}  |  night {tot_night:.0f}  "
+      f"({pct_night:.0f}% of breast-time is at night)")
+print(f"  Feeds/night avg: {night_cnt.mean():.1f}  |  Feeds/day avg: {day_cnt.mean():.1f}")
+print(f"  Night is 12h of 24h, so a flat distribution = 50%; "
+      f"observed {pct_night:.0f}%.")
+
+# rolling 3-day means
+roll = pd.DataFrame({
+    "feeds": daily["feeds"],
+    "feed_h": daily["feed_min"] / 60,
+    "diapers": daily["diapers"],
+    "poo": daily["poo"],
+}, index=pd.Index(full_dates))
+roll3 = roll.rolling(3, center=True, min_periods=1).mean()
+
+fig2 = plt.figure(figsize=(16, 9))
+gs2 = fig2.add_gridspec(2, 2, hspace=0.42, wspace=0.2)
+
+# Panel A: stacked day/night feed minutes
+axA = fig2.add_subplot(gs2[0, 0])
+axA.bar(x, day_min.values / 60, color="#5AD8A6", label="day (07–19)", alpha=0.9)
+axA.bar(x, night_min.values / 60, bottom=day_min.values / 60,
+        color="#3b5b8c", label="night (19–07)", alpha=0.9)
+axA.set_title("Feed time per day, split day vs night")
+axA.set_xticks(x); axA.set_xticklabels(day_labels, rotation=60, fontsize=7)
+axA.set_ylabel("hours on breast"); axA.legend(frameon=False, fontsize=8)
+
+# Panel B: % of feed-time at night (trend)
+axB = fig2.add_subplot(gs2[0, 1])
+pct_series = (night_min / (night_min + day_min) * 100).reindex(full_dates)
+axB.plot(x, pct_series.values, "-o", color="#3b5b8c", ms=4)
+axB.axhline(50, color="#999", ls="--", lw=1, label="50% (flat day/night)")
+axB.axhline(pct_series.mean(), color="#d64545", ls=":", lw=1.2,
+            label=f"avg {pct_series.mean():.0f}%")
+axB.set_title("Share of daily breast-time happening at night")
+axB.set_xticks(x); axB.set_xticklabels(day_labels, rotation=60, fontsize=7)
+axB.set_ylabel("% of feed minutes"); axB.set_ylim(0, 70)
+axB.legend(frameon=False, fontsize=8)
+
+# Panel C: 3-day rolling feeds + diapers
+axC = fig2.add_subplot(gs2[1, 0])
+axC.plot(x, roll["feeds"].values, color="#5AD8A6", alpha=0.35, lw=1, label="feeds (raw)")
+axC.plot(x, roll3["feeds"].values, color="#1f7a55", lw=2.5, label="feeds (3-day)")
+axC.plot(x, roll["diapers"].values, color="#F6BD16", alpha=0.35, lw=1, label="diapers (raw)")
+axC.plot(x, roll3["diapers"].values, color="#9a7400", lw=2.5, label="diapers (3-day)")
+axC.set_title("3-day rolling trend — feeds & diapers per day")
+axC.set_xticks(x); axC.set_xticklabels(day_labels, rotation=60, fontsize=7)
+axC.set_ylabel("count / day"); axC.legend(frameon=False, fontsize=8, ncol=2)
+
+# Panel D: 3-day rolling feed hours + poo
+axD = fig2.add_subplot(gs2[1, 1])
+axD.plot(x, roll["feed_h"].values, color="#36A36A", alpha=0.35, lw=1, label="feed h (raw)")
+axD.plot(x, roll3["feed_h"].values, color="#0b6b4f", lw=2.5, label="feed h (3-day)")
+axD.plot(x, roll["poo"].values, color="#B07D00", alpha=0.35, lw=1, label="poo (raw)")
+axD.plot(x, roll3["poo"].values, color="#7a5600", lw=2.5, label="poo (3-day)")
+axD.set_title("3-day rolling trend — breast hours & poo diapers per day")
+axD.set_xticks(x); axD.set_xticklabels(day_labels, rotation=60, fontsize=7)
+axD.set_ylabel("hours / count per day"); axD.legend(frameon=False, fontsize=8, ncol=2)
+
+fig2.suptitle("Day/night split & 3-day rolling trends", fontsize=15,
+              fontweight="bold", y=0.98)
+out2 = "/home/user/claude-code/baby_analysis/trends.png"
+fig2.savefig(out2, bbox_inches="tight", facecolor="white")
+print(f"Saved -> {out2}")
+
+# ===================================================================
+#  SELF-CONTAINED HTML REPORT (images embedded as base64)
+# ===================================================================
+import base64
+
+def b64(path):
+    with open(path, "rb") as fh:
+        return base64.b64encode(fh.read()).decode()
+
+stat_rows = [
+    ("Data span", f"{span_start:%b %d} – {span_end:%b %d, %Y} ({n_days} days)"),
+    ("Total records", f"{len(df)} ({len(feeds)} feeds, {len(diapers)} diapers, "
+                      f"{len(sleeps)} sleeps, {len(baths)} baths)"),
+    ("Feeds / day", f"{daily['feeds'].mean():.1f} (range {int(daily['feeds'].min())}–{int(daily['feeds'].max())})"),
+    ("Time on breast / day", f"{daily['feed_min'].mean()/60:.1f} h"),
+    ("Avg feed length", f"{ff['dur_min'].mean():.1f} min (median {ff['dur_min'].median():.0f})"),
+    ("Median gap between feeds", f"{intervals.median():.1f} h (max {intervals.max():.1f} h)"),
+    ("Breast-time at night (19–07)", f"{pct_night:.0f}%"),
+    ("Diapers / day", f"{daily['diapers'].mean():.1f}"),
+    ("Poo / day", f"{daily['poo'].mean():.1f} (yellow {(poo_d['color']=='yellow').sum()}, "
+                  f"green {(poo_d['color']=='green').sum()})"),
+    ("Logged sleep / day", f"{daily['sleep_min'].mean()/60:.1f} h ⚠ under-recorded"),
+    ("Breast side balance", f"L {L/(L+R)*100:.0f}% / R {R/(L+R)*100:.0f}%"),
+]
+rows_html = "\n".join(
+    f"<tr><th>{k}</th><td>{v}</td></tr>" for k, v in stat_rows)
+
+html = f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Newborn tracking report · {span_start:%b %d}–{span_end:%b %d %Y}</title>
+<style>
+  :root {{ --green:#1f7a55; --ink:#1f2540; }}
+  * {{ box-sizing:border-box; }}
+  body {{ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+          color:var(--ink); max-width:1100px; margin:0 auto; padding:32px 20px 80px;
+          line-height:1.5; background:#fafbfc; }}
+  h1 {{ font-size:1.7rem; margin:0 0 4px; }}
+  .sub {{ color:#667; margin-bottom:28px; }}
+  h2 {{ border-bottom:2px solid #e3e7ec; padding-bottom:6px; margin-top:40px; }}
+  table {{ border-collapse:collapse; width:100%; margin:8px 0 4px; font-size:0.95rem; }}
+  th,td {{ text-align:left; padding:8px 10px; border-bottom:1px solid #e8ecf0; }}
+  th {{ width:42%; color:#445; font-weight:600; background:#f3f6f9; }}
+  img {{ width:100%; height:auto; border:1px solid #e3e7ec; border-radius:8px;
+         margin:10px 0; background:#fff; }}
+  .flags li {{ margin:6px 0; }}
+  .warn {{ color:#b3261e; }} .ok {{ color:var(--green); }}
+  .note {{ font-size:0.85rem; color:#778; margin-top:40px; border-top:1px solid #e3e7ec;
+           padding-top:16px; }}
+  ul {{ padding-left:20px; }}
+</style></head><body>
+<h1>Newborn tracking — critical analysis</h1>
+<div class="sub">{span_start:%B %d} – {span_end:%B %d, %Y} · generated from {len(df)} logged events</div>
+
+<h2>Key numbers</h2>
+<table>{rows_html}</table>
+
+<h2>What the data says</h2>
+<ul class="flags">
+  <li class="ok"><b>Feeding is intense &amp; cluster-heavy.</b> ~{daily['feeds'].mean():.0f} feeds/day,
+      median gap {intervals.median():.1f} h, median session {ff['dur_min'].median():.0f} min — normal newborn cluster feeding.</li>
+  <li class="ok"><b>Stool looks reassuring.</b> mostly yellow ({(poo_d['color']=='yellow').sum()} yellow vs
+      {(poo_d['color']=='green').sum()} green), ~{daily['poo'].mean():.1f}/day.</li>
+  <li><b>Night load:</b> {pct_night:.0f}% of breast-time happens in the 19:00–07:00 window
+      (a flat clock would be 50%) — feeding is still round-the-clock with no night consolidation yet.</li>
+  <li class="warn"><b>Sleep is under-logged</b> ({daily['sleep_min'].mean()/60:.1f} h/day vs the expected 14–17 h) —
+      treat the sleep panel as a record of logging effort, not actual sleep.</li>
+  <li class="warn"><b>Diapers may be under-counted</b> ({daily['diapers'].mean():.1f}/day is on the low side for
+      a breastfed newborn) — wet-diaper count is the usual intake check, so worth logging consistently.</li>
+</ul>
+
+<h2>Dashboard</h2>
+<img src="data:image/png;base64,{b64(out)}" alt="dashboard">
+
+<h2>Day/night split &amp; 3-day rolling trends</h2>
+<img src="data:image/png;base64,{b64(out2)}" alt="trends">
+
+<div class="note">
+  Generated by <code>analyze.py</code>. Night window = 19:00–07:00. Daily averages use the
+  {len(full_dates)} fully-logged days (first/last partial days excluded). This is pattern-reading on
+  self-logged data, not medical advice — the sleep and diaper gaps mean the picture is incomplete.
+</div>
+</body></html>"""
+
+out3 = "/home/user/claude-code/baby_analysis/report.html"
+with open(out3, "w") as fh:
+    fh.write(html)
+print(f"Saved -> {out3}")
