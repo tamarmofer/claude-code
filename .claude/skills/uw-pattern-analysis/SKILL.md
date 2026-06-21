@@ -85,3 +85,4 @@ Close with what was checked and what couldn't be (unknown outcomes, thin samples
 - **`scripts/extract_models.py`** — label-driven extractor: folder of workbooks → `deals.csv`.
 - **`scripts/analyze_patterns.py`** — runs the four lenses over `deals.csv` and prints ranked candidate patterns with stats.
 - **`assets/pattern-report-template.md`** — the output format for the final 3-pattern report.
+- **`examples/example-report.md`** — a fully populated report on synthetic data showing the expected depth, evidence standard, and blunt tone.
