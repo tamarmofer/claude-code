@@ -446,7 +446,144 @@ html = f"""<!doctype html>
 </div>
 </body></html>"""
 
+# ===================================================================
+#  STUDY-DAY / STUDY-WEEK AXIS  (proxy for age; no DOB available)
+# ===================================================================
+# Day 1 = first fully-logged day. Set BIRTH_DATE below to switch to true age.
+BIRTH_DATE = None  # e.g. pd.Timestamp("2026-06-01") -> enables real age-in-weeks
+day0 = full_dates[0]
+study_day = [(d - day0).days + 1 for d in full_dates]  # 1..N
+week_idx  = [(sd - 1) // 7 + 1 for sd in study_day]    # 1,1,...,2,...
+
+def age_label(d):
+    if BIRTH_DATE is not None:
+        wk = ((pd.Timestamp(d) - BIRTH_DATE).days) // 7
+        return f"wk {wk}"
+    return f"D{(d - day0).days + 1}"
+
+# add a secondary "study day" axis + week shading to the trends figure
+week_colors = ["#eef4ff", "#fff7e8", "#f0fff4"]
+for ax in (axA, axB, axC, axD):
+    for i, sd in enumerate(study_day):
+        ax.axvspan(i - 0.5, i + 0.5, color=week_colors[(week_idx[i]-1) % 3],
+                   alpha=0.5, zorder=0)
+    top = ax.secondary_xaxis("top")
+    top.set_xticks(x)
+    top.set_xticklabels([f"D{sd}" for sd in study_day], fontsize=6, color="#667")
+    top.set_xlabel("study day (Day 1 = first full log)", fontsize=8, color="#667")
+fig2.savefig(out2, bbox_inches="tight", facecolor="white")
+print(f"Re-saved with study-day axis -> {out2}")
+
+# ===================================================================
+#  WEEK 1 vs WEEK 2 SUMMARY
+# ===================================================================
+wk_of_date = {d: week_idx[i] for i, d in enumerate(full_dates)}
+ff["wk"]  = ff["date"].map(wk_of_date)
+fd2["wk"] = fd2["date"].map(wk_of_date)
+poo_d_full = poo_d[poo_d["date"].isin(full_dates)].copy()
+poo_d_full["wk"] = poo_d_full["date"].map(wk_of_date)
+
+# feed intervals per week
+fs_sorted = feeds.copy()
+fs_sorted["d"] = fs_sorted["Start"].dt.date
+fs_sorted = fs_sorted[fs_sorted["d"].isin(full_dates)].sort_values("Start")
+fs_sorted["gap_h"] = fs_sorted["Start"].diff().dt.total_seconds() / 3600
+fs_sorted["wk"] = fs_sorted["d"].map(wk_of_date)
+
+weeks_present = sorted(set(week_idx))
+wk_rows = []
+for w in weeks_present:
+    days = [d for d in full_dates if wk_of_date[d] == w]
+    nd = len(days)
+    fw = ff[ff["wk"] == w]
+    dw = fd2[fd2["wk"] == w]
+    pw = poo_d_full[poo_d_full["wk"] == w]
+    gaps = fs_sorted[(fs_sorted["wk"] == w)]["gap_h"]
+    gaps = gaps[(gaps > 0) & (gaps < 12)]
+    nightmin = fw[fw["night"]]["dur_min"].sum()
+    allmin = fw["dur_min"].sum()
+    wk_rows.append({
+        "Week": f"Week {w}" + (" (partial)" if nd < 7 else ""),
+        "Days": nd,
+        "Feeds/day": fw.shape[0] / nd,
+        "Breast h/day": fw["dur_min"].sum() / 60 / nd,
+        "Avg feed (min)": fw["dur_min"].mean(),
+        "Median gap (h)": gaps.median(),
+        "% night": nightmin / allmin * 100 if allmin else np.nan,
+        "Diapers/day": dw.shape[0] / nd,
+        "Poo/day": pw.shape[0] / nd,
+        "% green stool": (pw["color"] == "green").mean() * 100 if len(pw) else 0,
+    })
+wk_df = pd.DataFrame(wk_rows).set_index("Week")
+
+print("\n" + "=" * 70)
+print("WEEKLY SUMMARY (Day 1 = first full log)")
+print(wk_df.round(1).to_string())
+
+# delta Week1 -> Week2 (only if both full)
+if len(weeks_present) >= 2:
+    w1, w2 = wk_df.iloc[0], wk_df.iloc[1]
+    print("\nWeek 1 -> Week 2 change:")
+    for col in ["Feeds/day", "Breast h/day", "Avg feed (min)", "Median gap (h)",
+                "% night", "Diapers/day", "Poo/day"]:
+        d = w2[col] - w1[col]
+        print(f"  {col:16s} {w1[col]:6.1f} -> {w2[col]:6.1f}  ({d:+.1f})")
+
+# ---- weekly comparison figure (grouped bars) ----
+metrics = ["Feeds/day", "Breast h/day", "Avg feed (min)", "Median gap (h)",
+           "% night", "Diapers/day", "Poo/day"]
+fig3, axes3 = plt.subplots(2, 4, figsize=(16, 7))
+axes3 = axes3.ravel()
+bar_colors = ["#5AD8A6", "#5B8FF9", "#F6BD16"]
+for ax, m in zip(axes3, metrics):
+    vals = wk_df[m].values
+    labels = [w.replace(" (partial)", "*") for w in wk_df.index]
+    bars = ax.bar(labels, vals, color=[bar_colors[i % 3] for i in range(len(vals))],
+                  alpha=0.9)
+    ax.set_title(m, fontsize=11)
+    ax.tick_params(axis="x", labelsize=8)
+    for b, v in zip(bars, vals):
+        if not np.isnan(v):
+            ax.text(b.get_x() + b.get_width()/2, v, f"{v:.1f}",
+                    ha="center", va="bottom", fontsize=8)
+    ax.margins(y=0.18)
+# last axis: hide if unused
+for ax in axes3[len(metrics):]:
+    ax.axis("off")
+axes3[-1].axis("off")
+axes3[-1].text(0.0, 0.9, "Week buckets are 7 study-days each\n"
+               "(Day 1 = first fully-logged day).\n"
+               "* = partial week.\n\nNo birth date provided, so these are\n"
+               "weeks-since-first-log, not true age.\n"
+               "Set BIRTH_DATE in analyze.py for\nreal age-in-weeks.",
+               fontsize=9, va="top", color="#445")
+fig3.suptitle("Week-over-week comparison", fontsize=15, fontweight="bold", y=1.0)
+fig3.tight_layout(rect=[0, 0, 1, 0.97])
+out4 = "/home/user/claude-code/baby_analysis/weekly.png"
+fig3.savefig(out4, bbox_inches="tight", facecolor="white")
+print(f"Saved -> {out4}")
+
+# ---- weekly table as HTML ----
+wk_html = wk_df.round(1).reset_index().to_html(index=False, border=0,
+            classes="wk", float_format=lambda v: f"{v:.1f}")
+
 out3 = "/home/user/claude-code/baby_analysis/report.html"
+# inject weekly section + extra image into the HTML built earlier
+weekly_section = f"""
+<h2>Week 1 vs Week 2</h2>
+<table class="wk-wrap">{wk_html}</table>
+<img src="data:image/png;base64,{b64(out4)}" alt="weekly comparison">
+<p class="sub" style="margin-top:6px">Weeks are 7 study-days each (Day&nbsp;1 = first fully-logged day).
+No birth date was supplied, so this is <i>weeks since first log</i>, not true postnatal age.</p>
+"""
+html = html.replace("<h2>Dashboard</h2>", weekly_section + "\n<h2>Dashboard</h2>")
+# re-embed trends image (now has study-day axis)
+html = re.sub(r'(<h2>Day/night split[^<]*</h2>\s*<img src="data:image/png;base64,)[^"]+',
+              lambda mobj: mobj.group(1) + b64(out2), html)
+# small style for the weekly table
+html = html.replace("</style>",
+    "  table.wk {{ font-size:0.85rem; }} table.wk th {{ background:#eef4ff; width:auto; }}\n</style>"
+    .replace("{{","{").replace("}}","}"))
 with open(out3, "w") as fh:
     fh.write(html)
 print(f"Saved -> {out3}")
