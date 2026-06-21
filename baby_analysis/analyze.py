@@ -49,9 +49,15 @@ baths   = df[df["Type"] == "Bath"].copy()
 # A feed with a real duration (breast session); bottle feeds have no duration
 feed_sessions = feeds[feeds["dur_min"].notna()].copy()
 
+# Birth date (config). Set to None to fall back to "study day" labelling.
+BIRTH_DATE = pd.Timestamp("2026-06-05")  # DOB == first log day; tracked from birth
+HAS_DOB = BIRTH_DATE is not None
+
 span_start = df["Start"].min()
 span_end   = df["Start"].max()
 n_days = (span_end.normalize() - span_start.normalize()).days + 1
+age_start = (span_start.normalize() - BIRTH_DATE).days if HAS_DOB else None
+age_end   = (span_end.normalize() - BIRTH_DATE).days if HAS_DOB else None
 
 print("=" * 70)
 print(f"DATA SPAN: {span_start:%Y-%m-%d %H:%M}  ->  {span_end:%Y-%m-%d %H:%M}  ({n_days} days)")
@@ -373,6 +379,8 @@ def b64(path):
 
 stat_rows = [
     ("Data span", f"{span_start:%b %d} – {span_end:%b %d, %Y} ({n_days} days)"),
+    ("Baby's age over span", f"day {age_start} – day {age_end} of life "
+        f"(DOB {BIRTH_DATE:%b %d, %Y})" if HAS_DOB else "—"),
     ("Total records", f"{len(df)} ({len(feeds)} feeds, {len(diapers)} diapers, "
                       f"{len(sleeps)} sleeps, {len(baths)} baths)"),
     ("Feeds / day", f"{daily['feeds'].mean():.1f} (range {int(daily['feeds'].min())}–{int(daily['feeds'].max())})"),
@@ -414,7 +422,8 @@ html = f"""<!doctype html>
   ul {{ padding-left:20px; }}
 </style></head><body>
 <h1>Newborn tracking — critical analysis</h1>
-<div class="sub">{span_start:%B %d} – {span_end:%B %d, %Y} · generated from {len(df)} logged events</div>
+<div class="sub">{span_start:%B %d} – {span_end:%B %d, %Y} · first {age_end} days of life
+(DOB {BIRTH_DATE:%B %d, %Y}) · {len(df)} logged events</div>
 
 <h2>Key numbers</h2>
 <table>{rows_html}</table>
@@ -447,21 +456,26 @@ html = f"""<!doctype html>
 </body></html>"""
 
 # ===================================================================
-#  STUDY-DAY / STUDY-WEEK AXIS  (proxy for age; no DOB available)
+#  AGE AXIS  (true age-in-weeks; DOB known)
 # ===================================================================
-# Day 1 = first fully-logged day. Set BIRTH_DATE below to switch to true age.
-BIRTH_DATE = None  # e.g. pd.Timestamp("2026-06-01") -> enables real age-in-weeks
-day0 = full_dates[0]
-study_day = [(d - day0).days + 1 for d in full_dates]  # 1..N
-week_idx  = [(sd - 1) // 7 + 1 for sd in study_day]    # 1,1,...,2,...
+if HAS_DOB:
+    study_day = [(pd.Timestamp(d) - BIRTH_DATE).days for d in full_dates]  # age in days
+    week_idx  = [a // 7 + 1 for a in study_day]   # week-of-life: days 0-6 -> wk1
+    top_label = f"age in days  (DOB {BIRTH_DATE:%b %d, %Y})"
+    daytick   = [f"d{a}" for a in study_day]
+else:
+    day0 = full_dates[0]
+    study_day = [(d - day0).days + 1 for d in full_dates]
+    week_idx  = [(sd - 1) // 7 + 1 for sd in study_day]
+    top_label = "study day (Day 1 = first full log)"
+    daytick   = [f"D{sd}" for sd in study_day]
 
-def age_label(d):
-    if BIRTH_DATE is not None:
-        wk = ((pd.Timestamp(d) - BIRTH_DATE).days) // 7
-        return f"wk {wk}"
-    return f"D{(d - day0).days + 1}"
+def week_range_label(w):
+    """Age-day range covered by week-of-life w within the full-day set."""
+    ages = [study_day[i] for i in range(len(full_dates)) if week_idx[i] == w]
+    return f"d{min(ages)}–{max(ages)}"
 
-# add a secondary "study day" axis + week shading to the trends figure
+# add a secondary age axis + week-of-life shading to the trends figure
 week_colors = ["#eef4ff", "#fff7e8", "#f0fff4"]
 for ax in (axA, axB, axC, axD):
     for i, sd in enumerate(study_day):
@@ -469,10 +483,10 @@ for ax in (axA, axB, axC, axD):
                    alpha=0.5, zorder=0)
     top = ax.secondary_xaxis("top")
     top.set_xticks(x)
-    top.set_xticklabels([f"D{sd}" for sd in study_day], fontsize=6, color="#667")
-    top.set_xlabel("study day (Day 1 = first full log)", fontsize=8, color="#667")
+    top.set_xticklabels(daytick, fontsize=6, color="#667")
+    top.set_xlabel(top_label, fontsize=8, color="#667")
 fig2.savefig(out2, bbox_inches="tight", facecolor="white")
-print(f"Re-saved with study-day axis -> {out2}")
+print(f"Re-saved with age axis -> {out2}")
 
 # ===================================================================
 #  WEEK 1 vs WEEK 2 SUMMARY
@@ -502,8 +516,10 @@ for w in weeks_present:
     gaps = gaps[(gaps > 0) & (gaps < 12)]
     nightmin = fw[fw["night"]]["dur_min"].sum()
     allmin = fw["dur_min"].sum()
+    wlabel = (f"Week {w} of life ({week_range_label(w)})" if HAS_DOB
+              else f"Week {w}")
     wk_rows.append({
-        "Week": f"Week {w}" + (" (partial)" if nd < 7 else ""),
+        "Week": wlabel + (" *" if nd < 7 else ""),
         "Days": nd,
         "Feeds/day": fw.shape[0] / nd,
         "Breast h/day": fw["dur_min"].sum() / 60 / nd,
@@ -517,7 +533,8 @@ for w in weeks_present:
 wk_df = pd.DataFrame(wk_rows).set_index("Week")
 
 print("\n" + "=" * 70)
-print("WEEKLY SUMMARY (Day 1 = first full log)")
+print("WEEKLY SUMMARY  (week-of-life; DOB {:%b %d, %Y})".format(BIRTH_DATE)
+      if HAS_DOB else "WEEKLY SUMMARY (Day 1 = first full log)")
 print(wk_df.round(1).to_string())
 
 # delta Week1 -> Week2 (only if both full)
@@ -535,9 +552,13 @@ metrics = ["Feeds/day", "Breast h/day", "Avg feed (min)", "Median gap (h)",
 fig3, axes3 = plt.subplots(2, 4, figsize=(16, 7))
 axes3 = axes3.ravel()
 bar_colors = ["#5AD8A6", "#5B8FF9", "#F6BD16"]
+short_labels = ([f"Wk {w}\n({week_range_label(w)})" for w in weeks_present] if HAS_DOB
+                else [f"Week {w}" for w in weeks_present])
+short_labels = [l + " *" if d < 7 else l
+                for l, d in zip(short_labels, wk_df["Days"].values)]
 for ax, m in zip(axes3, metrics):
     vals = wk_df[m].values
-    labels = [w.replace(" (partial)", "*") for w in wk_df.index]
+    labels = short_labels
     bars = ax.bar(labels, vals, color=[bar_colors[i % 3] for i in range(len(vals))],
                   alpha=0.9)
     ax.set_title(m, fontsize=11)
@@ -551,13 +572,16 @@ for ax, m in zip(axes3, metrics):
 for ax in axes3[len(metrics):]:
     ax.axis("off")
 axes3[-1].axis("off")
-axes3[-1].text(0.0, 0.9, "Week buckets are 7 study-days each\n"
-               "(Day 1 = first fully-logged day).\n"
-               "* = partial week.\n\nNo birth date provided, so these are\n"
-               "weeks-since-first-log, not true age.\n"
-               "Set BIRTH_DATE in analyze.py for\nreal age-in-weeks.",
+axes3[-1].text(0.0, 0.9,
+               f"Weeks of life from DOB {BIRTH_DATE:%b %d, %Y}\n"
+               "(week 1 = days 0–6, etc.).\n"
+               "* = partial week (fewer than 7 days\n"
+               "of full logging).\n\n"
+               "Birth day (d0) and the final partial\n"
+               "day are excluded from daily averages.",
                fontsize=9, va="top", color="#445")
-fig3.suptitle("Week-over-week comparison", fontsize=15, fontweight="bold", y=1.0)
+fig3.suptitle("Week-over-week comparison (age in weeks of life)",
+              fontsize=15, fontweight="bold", y=1.0)
 fig3.tight_layout(rect=[0, 0, 1, 0.97])
 out4 = "/home/user/claude-code/baby_analysis/weekly.png"
 fig3.savefig(out4, bbox_inches="tight", facecolor="white")
@@ -570,11 +594,12 @@ wk_html = wk_df.round(1).reset_index().to_html(index=False, border=0,
 out3 = "/home/user/claude-code/baby_analysis/report.html"
 # inject weekly section + extra image into the HTML built earlier
 weekly_section = f"""
-<h2>Week 1 vs Week 2</h2>
+<h2>Week-over-week (age in weeks of life)</h2>
 <table class="wk-wrap">{wk_html}</table>
 <img src="data:image/png;base64,{b64(out4)}" alt="weekly comparison">
-<p class="sub" style="margin-top:6px">Weeks are 7 study-days each (Day&nbsp;1 = first fully-logged day).
-No birth date was supplied, so this is <i>weeks since first log</i>, not true postnatal age.</p>
+<p class="sub" style="margin-top:6px">Age computed from <b>DOB {BIRTH_DATE:%B&nbsp;%d,&nbsp;%Y}</b>
+(same day tracking began). Week 1 = days&nbsp;0–6 of life, etc. * marks a partial week.
+The birth day and the final partial day are excluded from daily averages.</p>
 """
 html = html.replace("<h2>Dashboard</h2>", weekly_section + "\n<h2>Dashboard</h2>")
 # re-embed trends image (now has study-day axis)
