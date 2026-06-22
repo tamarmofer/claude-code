@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Opportunity Filter — YES or NO</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --card: #181b22;
+    --line: #262b35;
+    --text: #e7ebf0;
+    --muted: #9aa4b2;
+    --yes: #2ecc71;
+    --no: #ff5c6c;
+    --maybe: #f0b429;
+    --accent: #5b8cff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 32px 16px 80px;
+  }
+  .wrap { width: 100%; max-width: 640px; }
+  header { margin-bottom: 8px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 24px; font-size: 14px; }
+  .opp {
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--text);
+    padding: 12px 14px;
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  .opp::placeholder { color: var(--muted); }
+  .section-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin: 24px 0 10px;
+  }
+  .q {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .q.dealbreaker { border-left: 3px solid var(--no); }
+  .q-text { margin-bottom: 10px; }
+  .q-text .tag {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--no);
+    border: 1px solid var(--no);
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .q-hint { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  .opts { display: flex; gap: 8px; }
+  .opts button {
+    flex: 1;
+    padding: 8px 0;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 15px;
+    transition: all .12s ease;
+  }
+  .opts button:hover { border-color: var(--accent); }
+  .opts button.sel-yes { background: var(--yes); border-color: var(--yes); color: #05210f; font-weight: 600; }
+  .opts button.sel-no { background: var(--no); border-color: var(--no); color: #2a0509; font-weight: 600; }
+  .verdict {
+    margin-top: 28px;
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid var(--line);
+    background: var(--card);
+  }
+  .verdict .big { font-size: 44px; font-weight: 800; letter-spacing: .02em; }
+  .verdict.is-yes .big { color: var(--yes); }
+  .verdict.is-no .big { color: var(--no); }
+  .verdict.is-wait .big { color: var(--maybe); }
+  .verdict .why { color: var(--muted); margin-top: 10px; font-size: 14px; }
+  .verdict ul { text-align: left; margin: 14px auto 0; max-width: 460px; padding-left: 20px; }
+  .verdict li { margin: 4px 0; font-size: 14px; }
+  .bar {
+    height: 8px; border-radius: 99px; background: var(--line);
+    overflow: hidden; margin: 16px auto 0; max-width: 460px;
+  }
+  .bar > span { display: block; height: 100%; background: var(--accent); transition: width .2s ease; }
+  .actions { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
+  .actions button {
+    background: transparent; color: var(--muted); border: 1px solid var(--line);
+    border-radius: 8px; padding: 8px 16px; cursor: pointer; font-size: 14px;
+  }
+  .actions button:hover { color: var(--text); border-color: var(--accent); }
+  footer { color: var(--muted); font-size: 12px; margin-top: 28px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Opportunity Filter</h1>
+    <p class="sub">A fast YES / NO gut-check before you say yes to something new. Rule of thumb: if it isn't a clear <em>"hell yeah"</em>, it's a no.</p>
+  </header>
+
+  <input class="opp" id="oppName" type="text" placeholder="What's the opportunity? (e.g. 'Speak at the X conference')" />
+
+  <div id="questions"></div>
+
+  <div class="verdict" id="verdict">
+    <div class="big" id="verdictBig">—</div>
+    <div class="why" id="verdictWhy">Answer the questions to get your verdict.</div>
+    <div class="bar"><span id="bar" style="width:0%"></span></div>
+    <ul id="verdictNotes"></ul>
+  </div>
+
+  <div class="actions">
+    <button id="resetBtn">Reset</button>
+    <button id="copyBtn">Copy decision</button>
+  </div>
+
+  <footer>Your answers stay in this browser. Nothing is sent anywhere.</footer>
+</div>
+
+<script>
+// Each question has a `goodAnswer` (the answer that favors saying yes).
+// `dealbreaker: true` means a non-good answer single-handedly forces a NO.
+const QUESTIONS = [
+  {
+    id: 'capacity',
+    text: 'Do I realistically have the time without dropping an existing commitment?',
+    hint: 'If you have to steal time from sleep, family, or current priorities, that is a hidden cost.',
+    dealbreaker: true,
+    goodAnswer: 'yes'
+  },
+  {
+    id: 'goals',
+    text: 'Does this move me toward a goal I actually care about right now?',
+    hint: 'Not a goal you think you should have — one you are actively pursuing.',
+    dealbreaker: false,
+    goodAnswer: 'yes'
+  },
+  {
+    id: 'excited',
+    text: 'Would I be glad I said yes when the work actually starts — not just flattered now?',
+    hint: 'Beware saying yes to the idea of it. Picture the calendar reminder firing next month.',
+    dealbreaker: false,
+    goodAnswer: 'yes'
+  },
+  {
+    id: 'unique',
+    text: 'Am I well-suited for this, or will I clearly learn/grow from it?',
+    hint: 'If almost anyone could do it and you gain little, your time is better spent elsewhere.',
+    dealbreaker: false,
+    goodAnswer: 'yes'
+  },
+  {
+    id: 'bounded',
+    text: 'Is the commitment clearly bounded (scope + end date I can live with)?',
+    hint: 'Open-ended "let\'s see where it goes" asks are how overcommitment happens.',
+    dealbreaker: true,
+    goodAnswer: 'yes'
+  },
+  {
+    id: 'reversible',
+    text: 'Can I exit gracefully if it stops being worth it?',
+    hint: 'A cheap exit lowers the risk of any single yes.',
+    dealbreaker: false,
+    goodAnswer: 'yes'
+  }
+];
+
+const answers = {};
+
+const qContainer = document.getElementById('questions');
+
+function render() {
+  qContainer.innerHTML = '';
+  const dealLabel = document.createElement('div');
+  qContainer.appendChild(dealLabel);
+
+  QUESTIONS.forEach(q => {
+    const el = document.createElement('div');
+    el.className = 'q' + (q.dealbreaker ? ' dealbreaker' : '');
+    el.innerHTML = `
+      <div class="q-text">${q.text}${q.dealbreaker ? '<span class="tag">DEALBREAKER</span>' : ''}</div>
+      <div class="opts">
+        <button data-q="${q.id}" data-a="yes">Yes</button>
+        <button data-q="${q.id}" data-a="no">No</button>
+      </div>
+      <div class="q-hint">${q.hint}</div>
+    `;
+    qContainer.appendChild(el);
+  });
+
+  qContainer.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const qid = btn.dataset.q;
+      const a = btn.dataset.a;
+      answers[qid] = a;
+      // update selection styles within this question
+      const group = btn.parentElement;
+      group.querySelectorAll('button').forEach(b => { b.className = ''; });
+      btn.className = a === 'yes' ? 'sel-yes' : 'sel-no';
+      compute();
+    });
+  });
+}
+
+function compute() {
+  const total = QUESTIONS.length;
+  const answered = QUESTIONS.filter(q => answers[q.id]).length;
+  const goodCount = QUESTIONS.filter(q => answers[q.id] === q.goodAnswer).length;
+
+  const verdict = document.getElementById('verdict');
+  const big = document.getElementById('verdictBig');
+  const why = document.getElementById('verdictWhy');
+  const notes = document.getElementById('verdictNotes');
+  const bar = document.getElementById('bar');
+
+  notes.innerHTML = '';
+  bar.style.width = Math.round((goodCount / total) * 100) + '%';
+
+  if (answered < total) {
+    verdict.className = 'verdict';
+    big.textContent = '—';
+    why.textContent = `Answered ${answered} of ${total}. Finish to get a clear verdict.`;
+    return;
+  }
+
+  // Dealbreaker check
+  const failedDealbreakers = QUESTIONS.filter(q => q.dealbreaker && answers[q.id] !== q.goodAnswer);
+  if (failedDealbreakers.length > 0) {
+    verdict.className = 'verdict is-no';
+    big.textContent = 'NO';
+    why.textContent = 'A dealbreaker failed. Protect your time — this one is a pass.';
+    failedDealbreakers.forEach(q => {
+      const li = document.createElement('li');
+      li.textContent = '✗ ' + q.text;
+      notes.appendChild(li);
+    });
+    return;
+  }
+
+  // "Hell yeah or no": require a strong majority of the value questions.
+  // goodCount includes dealbreakers (already all passed here).
+  if (goodCount === total) {
+    verdict.className = 'verdict is-yes';
+    big.textContent = 'YES';
+    why.textContent = 'Clear "hell yeah." Say yes — and put it on the calendar now.';
+  } else if (goodCount >= total - 1) {
+    verdict.className = 'verdict is-yes';
+    big.textContent = 'YES';
+    why.textContent = 'Strong yes. One soft spot — note it, then commit.';
+  } else {
+    verdict.className = 'verdict is-no';
+    big.textContent = 'NO';
+    why.textContent = 'Not a clear yes. By the "hell yeah or no" rule, that means no — keep the room open.';
+  }
+
+  // List the weak spots
+  QUESTIONS.filter(q => answers[q.id] !== q.goodAnswer).forEach(q => {
+    const li = document.createElement('li');
+    li.textContent = '• Soft spot: ' + q.text;
+    notes.appendChild(li);
+  });
+}
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  for (const k in answers) delete answers[k];
+  document.getElementById('oppName').value = '';
+  render();
+  compute();
+});
+
+document.getElementById('copyBtn').addEventListener('click', () => {
+  const name = document.getElementById('oppName').value || '(unnamed opportunity)';
+  const big = document.getElementById('verdictBig').textContent;
+  const why = document.getElementById('verdictWhy').textContent;
+  const lines = QUESTIONS.map(q => `  ${answers[q.id] === q.goodAnswer ? '✓' : '✗'} ${q.text} → ${(answers[q.id] || '—').toUpperCase()}`);
+  const text = `Opportunity: ${name}\nVerdict: ${big}\n${why}\n\n${lines.join('\n')}`;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    const old = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = old, 1200);
+  });
+});
+
+render();
+compute();
+</script>
+</body>
+</html>
