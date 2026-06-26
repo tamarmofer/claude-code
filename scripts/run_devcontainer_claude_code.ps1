@@ -5,24 +5,24 @@
 .DESCRIPTION
     This script automates the process of initializing, starting, and connecting to a DevContainer
     using either Docker or Podman as the container backend. It must be executed from the root
-    directory of your project and assumes the script is located in a 'Script' subdirectory.
+    directory of your project and assumes the script is located in a 'scripts' subdirectory.
 
 .PARAMETER Backend
     Specifies the container backend to use. Valid values are 'docker' or 'podman'.
 
 .EXAMPLE
-    .\Script\run_devcontainer_claude_code.ps1 -Backend docker
+    .\scripts\run_devcontainer_claude_code.ps1 -Backend docker
     Uses Docker as the container backend.
 
 .EXAMPLE
-    .\Script\run_devcontainer_claude_code.ps1 -Backend podman
+    .\scripts\run_devcontainer_claude_code.ps1 -Backend podman
     Uses Podman as the container backend.
 
 .NOTES
     Project Structure:
     Project/
     ├── .devcontainer/
-    └── Script/
+    └── scripts/
         └── run_devcontainer_claude_code.ps1
 #>
 
